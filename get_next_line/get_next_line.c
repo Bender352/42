@@ -34,28 +34,32 @@ char    *get_next_line(int fd)
 void    read_into_nodes(int fd, t_list **list)
 {
     char    *buf;
-    int     i_from;
-    int     i_to;
+    char    *temp_buf;
+    int     j;
+    int     i;
 
     buf = NULL;
     if(fd < 0 || BUFF_SIZE < 0 || read (fd, buf, 0) < 0)
         return;
     if(!(buf = malloc(sizeof(char) * BUFF_SIZE + 1)))
         return;
+    if(!(temp_buf = malloc(sizeof(char) * BUFF_SIZE + 1)))
+        return;
     (*list)->line_len = read(fd, buf, BUFF_SIZE);
     buf[(*list)->line_len] = '\0';
-    //printf("TEST \n%s", buf);
-    i_from = 0;
-    i_to = 0;
-    while(buf[i_to])
+    j = 0;
+    i = 0;
+    while(i < BUFF_SIZE)
     {
-        if (buf[i_to] == '\n' || buf[i_to] == '\0')
+        if (buf[i] == '\n' || buf[i] == '\0')
         {   
-            char    *test = ft_substr(buf, i_from, i_to - i_from);
-            printf("%s\n", test);
-            ft_lstadd_back(list, ft_lstnew(test));
-            i_from = i_to;
+            temp_buf[i] = '\0';
+            ft_lstadd_back(list, ft_lstnew(temp_buf));
+            i++;
+            j = 0;
         }
-        i_to++;
+        temp_buf[i] = buf[i];
+        i++;
+        j++;
     }
 }
