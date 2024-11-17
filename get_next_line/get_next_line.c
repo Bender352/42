@@ -29,7 +29,7 @@ wann jo dann muss en ob \n scannen, wann dat net den fall as dann muss en den Bu
 Wiederhuelen biss en \n oder \o fennt
 
 Wann en font gouf muss den recht an den Stach geschéckt ginn.
-Dann retour iwwer get_next_line to main.*/
+Dann retour iwwer get_next_line to main .*/
 void    read_into_list(int fd, t_list *list)
 {
     size_t  i;
