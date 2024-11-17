@@ -8,7 +8,7 @@ int main(void)
     fd = open("utilities/text.txt", O_RDONLY);
     while ((buf = get_next_line(fd)))
     {
-        printf("%s", buf);
+        printf("%sfwafawfwafwa", buf);
     }
     return (0);
 }
