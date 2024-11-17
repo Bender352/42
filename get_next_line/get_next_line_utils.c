@@ -69,9 +69,10 @@ void	ft_cpy_stach_to_buf(t_list *list)
 	}
 	while (i < list->stach_len)
 	{
-		list->buf[i] = list->stach_len;
+		list->buf[i] = list->stach[i];
 		i++;
 	}
+	list->buf_len = ft_strlen(list->buf);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
