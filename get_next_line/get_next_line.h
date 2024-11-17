@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE
 
 # ifndef BUFF_SIZE
-# define BUFF_SIZE 100
+# define BUFF_SIZE 10
 # endif
 
 typedef struct s_list
@@ -38,6 +38,8 @@ void	append_to_stach(t_list *list, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
+void	del_list_content(char *str);
+void	ft_cpy_stach_to_buf(t_list *list);
 
 
 # endif

@@ -17,13 +17,18 @@ void	append_to_stach(t_list *list, char c)
 	char	*temp_buf;
 	size_t	i;
 
-	printf("list->stach address: %p\n", list->stach);
 	list->stach_len = (int)ft_strlen(list->stach);
+	//printf("stach leng is : %d\n",list->stach_len);
+	//printf("Stach buffer is: %s", list->stach);
 	temp_buf = ft_strdup(list->stach);
+	//printf("TEMP buffer is: %s", temp_buf);
 	free(list->stach);
 	list->stach = malloc(sizeof(char) * list->stach_len + 2);
 	if(!(list->stach))
+	{
+		del_list_content(list->stach);
 		return;
+	}
 	i = 0;
 	while ((int)i < list->stach_len + 2)
 	{
@@ -36,6 +41,39 @@ void	append_to_stach(t_list *list, char c)
 	list->stach[i] = '\0';
 }
 
+void	del_list_content(char *str)
+{
+	size_t	i;
+	size_t	j;
+
+	i = ft_strlen(str);
+	j = 0;
+	while (j < i)
+	{
+		str[j] = '\0';
+		j++;
+	}
+	free(str);
+}
+
+void	ft_cpy_stach_to_buf(t_list *list)
+{
+	int	i;
+
+	i = 0;
+	list->stach_len = ft_strlen(list->stach);
+	if(!(list->buf = malloc(BUFF_SIZE + list->stach_len + 1)))
+	{
+		del_list_content(list->buf);
+		return;
+	}
+	while (i < list->stach_len)
+	{
+		list->buf[i] = list->stach_len;
+		i++;
+	}
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
@@ -44,7 +82,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	printf("list->stach address: %p\n", s);
 	length = ft_strlen((char *)s);
 	if (start >= length)
 		return (ft_strdup(""));

@@ -12,7 +12,7 @@ int main(void)
     {
         if(!buf)
             break;
-        printf("%sfwafawfwafwa", buf);
+        printf("%s", buf);
     }
     return (0);
 }

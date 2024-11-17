@@ -19,13 +19,11 @@ char    *get_next_line(int fd)
     /*check if everything is inistialised and edge cases*/
     list = malloc(sizeof(t_list));
     if(!(list))
-        return (NULL);
-    list->buf = malloc(BUFF_SIZE + 1);
-    if(!(list->buf))
     {
-        free(list->buf);
+        free(list);
         return (NULL);
     }
+    ft_cpy_stach_to_buf(list);
     if(fd < 0 && read(fd, list->buf, 0) && BUFF_SIZE < 0)
     {
         free(list->buf);
@@ -46,6 +44,7 @@ void    read_into_list(int fd, t_list *list)
     list->buf[list->buf_len] = '\0';
     while(i < (unsigned int)list->buf_len)
     {
+        printf("%d\n", (int)i);
         if(list->buf[i] == '\n')
             list->found_nl_pos = i;
         if (list->found_nl_pos > 0)
