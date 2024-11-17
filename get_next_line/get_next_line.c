@@ -16,50 +16,39 @@ char    *get_next_line(int fd)
 {
     static t_list  *list;
 
+    /*check if everything is inistialised and edge cases*/
     list = malloc(sizeof(t_list));
-    if(!(list))
+    if(!(list) && !(list->buf = malloc(BUFF_SIZE + 1)))
         return (NULL);
-    read_into_nodes(fd, &list);
-    while (list->next)
-    {
-       // printf("%s", list->content);
-       // printf("\n");
-        list = list->next;
-    }
-    if(list->next)
-        return list->content;
-    return (NULL);
+    if(fd < 0, read(fd, list->buf, 0) && BUFF_SIZE < 0)
+        return (NULL);
+    read_into_list(fd, list);
+    
 }
 
-void    read_into_nodes(int fd, t_list **list)
+void    read_into_list(int fd, t_list *list)
 {
-    char    *buf;
-    char    *temp_buf;
-    int     j;
-    int     i;
-
-    buf = NULL;
-    if(fd < 0 || BUFF_SIZE < 0 || read (fd, buf, 0) < 0)
-        return;
-    if(!(buf = malloc(sizeof(char) * BUFF_SIZE + 1)))
-        return;
-    if(!(temp_buf = malloc(sizeof(char) * BUFF_SIZE + 1)))
-        return;
-    (*list)->line_len = read(fd, buf, BUFF_SIZE);
-    buf[(*list)->line_len] = '\0';
-    j = 0;
+    size_t  i;
+    
+    list->buf_has_nl = 0;
     i = 0;
-    while(i < BUFF_SIZE)
+    list->buf_len = read(fd, list->buf, BUFF_SIZE);
+    while(i < list->buf_len)
     {
-        if (buf[i] == '\n' || buf[i] == '\0')
-        {   
-            temp_buf[i] = '\0';
-            ft_lstadd_back(list, ft_lstnew(temp_buf));
-            i++;
-            j = 0;
+        if(list->buf[i] == '\0' && list->buf[i] == '\n')
+        {
+            list->buf_has_nl = 1;
+            list->buf[i] = '\0';
+            if (i)
+            break;
         }
-        temp_buf[i] = buf[i];
+        if (list.buf_has_nl == 1)
+        {
+            
+        }
         i++;
-        j++;
     }
+
+        
+
 }

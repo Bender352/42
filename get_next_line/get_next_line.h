@@ -19,9 +19,13 @@
 
 typedef struct s_list
 {
-    int             line_len;
-    char            *content;
-    struct s_list   *next;
+    int             read_len;
+    int             found_nl;
+    char            content;
+    int             content_len;
+    char            stach;
+    int             stach_len;
+    struct s_list   next;
 } t_list;
 
 #include <stdio.h>
@@ -30,6 +34,7 @@ typedef struct s_list
 #include <stdlib.h>
 
 char    *get_next_line(int fd);
+void	get_substr_until_nl(t_list *list);
 void    read_into_nodes(int fd, t_list **list);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(void *content);

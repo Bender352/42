@@ -12,6 +12,46 @@
 
 #include "get_next_line.h"
 
+void	append_to_stach(t_list *list, char c)
+{
+	if(!list->stach)
+		list
+}
+void	get_substr_until_nl(t_list *list)
+{
+	const char	*start;
+	size_t		size_substr;
+	char		*substr;
+
+	*start = list->content;
+	while (list->content && list->content != '\n')
+	{
+		list->content++;
+	}
+	size_substr = list->content - start;
+	if(!(substr = malloc(sizeof(char) * size_substr + 1)))
+		return;
+	
+
+
+}
+
+void	ft_strncpy(t_list list, int len)
+{
+	char	*buf;
+	size_t	i;
+	size_t	buf_len;
+
+	buf_len = ft_str_len(list.stach) + len + 1;
+	if(!(buf = malloc(sizeof(char) * (buf_len))))
+		return;
+	i = 0;
+	while (i < buf_len)
+
+
+	if(!stach)
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
@@ -36,42 +76,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	result[i] = '\0';
 	return (result);
-}
-
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*buff;
-
-	buff = malloc(sizeof(t_list));
-	if (buff == NULL)
-		return (NULL);
-	buff->content = content;
-	buff->next = NULL;
-	return (buff);
-}
-
-t_list  *ft_lstlast(t_list *list)
-{
-    if (list == NULL)
-        return (NULL);
-    while (list->next != NULL)
-        list = list->next;
-    return (list);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*last;
-
-	if (!new || !lst)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	last = ft_lstlast(*lst);
-	last->next = new;
 }
 
 size_t	ft_strlen(const char *s)
