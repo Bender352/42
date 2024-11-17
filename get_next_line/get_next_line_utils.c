@@ -14,42 +14,23 @@
 
 void	append_to_stach(t_list *list, char c)
 {
-	if(!list->stach)
-		list
-}
-void	get_substr_until_nl(t_list *list)
-{
-	const char	*start;
-	size_t		size_substr;
-	char		*substr;
-
-	*start = list->content;
-	while (list->content && list->content != '\n')
-	{
-		list->content++;
-	}
-	size_substr = list->content - start;
-	if(!(substr = malloc(sizeof(char) * size_substr + 1)))
-		return;
-	
-
-
-}
-
-void	ft_strncpy(t_list list, int len)
-{
-	char	*buf;
+	char	*temp_buf;
 	size_t	i;
-	size_t	buf_len;
 
-	buf_len = ft_str_len(list.stach) + len + 1;
-	if(!(buf = malloc(sizeof(char) * (buf_len))))
-		return;
+	list->stach_len = ft_str_len(list->stach_len);
+	temp_buf = ft_strdup(list->stach);
+	free(list->stach);
+	list->stach = malloc(sizeof(char) * list->stach_len + 2);
 	i = 0;
-	while (i < buf_len)
-
-
-	if(!stach)
+	while (i < list->stach_len + 2)
+	{
+		if (i < list->stach_len)
+			list->stach[i] = temp_buf[i];
+		else
+			list->stach[i] = c;
+		i++;
+	}
+	list->stach[i] = '\0';
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)

@@ -20,10 +20,10 @@
 typedef struct s_list
 {
     int             read_len;
-    int             found_nl;
-    char            content;
-    int             content_len;
-    char            stach;
+    int             found_nl_pos;
+    char            *buf;
+    int             buf_len;
+    char            *stach;
     int             stach_len;
     struct s_list   next;
 } t_list;
