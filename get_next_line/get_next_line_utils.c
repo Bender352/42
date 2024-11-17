@@ -17,14 +17,17 @@ void	append_to_stach(t_list *list, char c)
 	char	*temp_buf;
 	size_t	i;
 
-	list->stach_len = ft_str_len(list->stach_len);
+	printf("list->stach address: %p\n", list->stach);
+	list->stach_len = (int)ft_strlen(list->stach);
 	temp_buf = ft_strdup(list->stach);
 	free(list->stach);
 	list->stach = malloc(sizeof(char) * list->stach_len + 2);
+	if(!(list->stach))
+		return;
 	i = 0;
-	while (i < list->stach_len + 2)
+	while ((int)i < list->stach_len + 2)
 	{
-		if (i < list->stach_len)
+		if ((int)i < list->stach_len)
 			list->stach[i] = temp_buf[i];
 		else
 			list->stach[i] = c;
@@ -41,6 +44,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
+	printf("list->stach address: %p\n", s);
 	length = ft_strlen((char *)s);
 	if (start >= length)
 		return (ft_strdup(""));
@@ -48,7 +52,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = length - start;
 	result = (char *) malloc(sizeof(char) * (len + 1));
 	if (result == NULL)
+	{
+		free(result);
 		return (NULL);
+	}
 	i = 0;
 	while (i < (unsigned int) len)
 	{
@@ -63,6 +70,9 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
+	if(s == NULL)
+		return (0);
+
 	i = 0;
 	while (s[i])
 		i++;
@@ -75,12 +85,17 @@ char	*ft_strdup(const char *s)
 	size_t	size_s;
 	size_t	i;
 
+	if(!s)
+		return(0);
 	size_s = 0;
 	while (s[size_s])
 		size_s++;
 	buff = malloc(size_s * (sizeof(char)) + 1);
 	if (buff == NULL)
+	{	
+		free(buff);
 		return (NULL);
+	}
 	i = 0;
 	while (i <= size_s)
 	{

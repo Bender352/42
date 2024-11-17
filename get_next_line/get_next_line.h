@@ -25,7 +25,6 @@ typedef struct s_list
     int             buf_len;
     char            *stach;
     int             stach_len;
-    struct s_list   next;
 } t_list;
 
 #include <stdio.h>
@@ -34,13 +33,11 @@ typedef struct s_list
 #include <stdlib.h>
 
 char    *get_next_line(int fd);
-void	get_substr_until_nl(t_list *list);
-void    read_into_nodes(int fd, t_list **list);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstnew(void *content);
-t_list  *ft_lstlast(t_list *list);
+void    read_into_list(int fd, t_list *list);
+void	append_to_stach(t_list *list, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s);
+
 
 # endif

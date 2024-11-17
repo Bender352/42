@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 SRC = get_next_line.c \
 	  get_next_line_utils.c \
 	  main.c
