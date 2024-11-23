@@ -10,37 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# ifndef BUFF_SIZE
-# define BUFF_SIZE 10
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
 # endif
 
-typedef struct s_list
-{
-    int             read_len;
-    int             found_nl_pos;
-    char            *buf;
-    int             buf_len;
-    char            *stach;
-    int             stach_len;
-} t_list;
-
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-char    *get_next_line(int fd);
-void    read_into_list(int fd, t_list *list);
-void	append_to_stach(t_list *list, char c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
-void	del_list_content(char *str);
-int     int_list(t_list *list, int fd);
-void	ft_cpy_stach_to_buf(t_list *list);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(char *s1, const char *s2);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 
-
-# endif
+#endif
