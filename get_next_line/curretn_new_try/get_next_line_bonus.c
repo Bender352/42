@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_joined_buffer(char *buffer, int fd)
 {
@@ -39,24 +39,24 @@ char	*get_joined_buffer(char *buffer, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*ret_line;
 	char		*temp;
 	int			i;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0 ,0))
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0 ,0) || fd > OPEN_MAX)
 		return (NULL);
-	buffer = get_joined_buffer(buffer, fd);
-	if (!buffer)
+	buffer[fd] = get_joined_buffer(buffer[fd], fd);
+	if (!buffer[fd])
 		return (NULL);
 	i = 0;
-	while (buffer[i] != '\n' && buffer[i])
+	while (buffer[fd][i] != '\n' && buffer[fd][i])
 		i++;
-	if (buffer[i] == '\n')
+	if (buffer[fd][i] == '\n')
 		i++;
-	ret_line = ft_substr(buffer, 0, i);
-	temp = ft_substr(buffer, i, ft_strlen(buffer) - i);
-	free(buffer);
-	buffer = temp;
+	ret_line = ft_substr(buffer[fd], 0, i);
+	temp = ft_substr(buffer[fd], i, ft_strlen(buffer[fd]) - i);
+	free(buffer[fd]);
+	buffer[fd] = temp;
 	return (ret_line);
 }
