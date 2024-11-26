@@ -44,7 +44,7 @@ char	*get_next_line(int fd)
 	char		*temp;
 	int			i;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0 ,0))
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0))
 		return (NULL);
 	buffer = get_joined_buffer(buffer, fd);
 	if (!buffer)
