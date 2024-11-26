@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:55:47 by sbruck            #+#    #+#             */
-/*   Updated: 2024/11/10 17:55:49 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/11/26 15:14:34 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_joined_buffer(char *buffer, int fd, long buf_size)
 {
@@ -39,7 +39,7 @@ char	*get_joined_buffer(char *buffer, int fd, long buf_size)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*ret_line;
 	char		*temp;
 	int			i;
@@ -49,19 +49,20 @@ char	*get_next_line(int fd)
 		buf_size = 100;
 	else
 		buf_size = BUFFER_SIZE;
-	if (fd < 0 || buf_size < 1 || read(fd, 0, 0))
+
+	if (fd < 0 || buf_size < 1)
 		return (NULL);
-	buffer = get_joined_buffer(buffer, fd, buf_size);
-	if (!buffer)
+	buffer[fd] = get_joined_buffer(buffer[fd], fd, buf_size);
+	if (!buffer[fd])
 		return (NULL);
 	i = 0;
-	while (buffer[i] != '\n' && buffer[i])
-		i++;
-	if (buffer[i] == '\n')
-		i++;
-	ret_line = ft_substr(buffer, 0, i);
-	temp = ft_substr(buffer, i, ft_strlen(buffer) - i);
-	free(buffer);
-	buffer = temp;
+	while (buffer[fd][i] != '\n' && buffer[fd][i])
+		++i;
+	if (buffer[fd][i] == '\n')
+		++i;
+	ret_line = ft_substr(buffer[fd], 0, i);
+	temp = ft_substr(buffer[fd], i, ft_strlen(buffer[fd]) - i);
+	free(buffer[fd]);
+	buffer[fd] = temp;
 	return (ret_line);
 }
