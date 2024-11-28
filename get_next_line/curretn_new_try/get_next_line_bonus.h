@@ -14,17 +14,17 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include <limits.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
-#ifndef OPEN_MAX
-# define OPEN_MAX 1024
-#endif
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
+# endif
 
 char	*get_next_line(int fd);
 char	*get_joined_buffer(char *buffer, int fd, long buf_size);

@@ -15,5 +15,6 @@ int	main(void)
 			break ;
 		printf("%s", buf);
 	}
+	free(buf);
 	return (0);
 }

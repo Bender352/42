@@ -12,29 +12,32 @@
 
 #include "get_next_line.h"
 
-char	*get_joined_buffer(char *buffer, int fd, long buf_size)
+char	*get_joined_buffer(char *buffer, int fd)
 {
-	char	temp[buf_size + 1];
+	char	*temp;
 	long	i;
 
 	i = -1;
-	while (++i <= buf_size)
+	temp = malloc(BUFFER_SIZE + 1);
+	if (!temp)
+		return (free_stuff(&temp), NULL);
+	while (++i <= BUFFER_SIZE)
 		temp[i] = '\0';
 	i = 1;
 	while (!ft_strchr(temp, '\n') && i)
 	{
-		i = read(fd, temp, buf_size);
+		i = read(fd, temp, BUFFER_SIZE);
 		if (i < 0 || (!i && !buffer))
-			return (NULL);
+			return (free_stuff(&temp), NULL);
 		temp[i] = '\0';
 		if (!buffer)
 			buffer = ft_strdup(temp);
 		else
 			buffer = ft_strjoin(buffer, temp);
 		if (!buffer)
-			return (NULL);
+			return (free_stuff(&temp), NULL);
 	}
-	return (buffer);
+	return (free_stuff(&temp), buffer);
 }
 
 char	*get_next_line(int fd)
@@ -43,15 +46,12 @@ char	*get_next_line(int fd)
 	char		*ret_line;
 	char		*temp;
 	int			i;
-	long		buf_size;
 
-	if (BUFFER_SIZE > 100)
-		buf_size = 100;
-	else
-		buf_size = BUFFER_SIZE;
-	if (fd < 0 || buf_size < 1 || read(fd, 0, 0))
+
+
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0))
 		return (NULL);
-	buffer = get_joined_buffer(buffer, fd, buf_size);
+	buffer = get_joined_buffer(buffer, fd);
 	if (!buffer)
 		return (NULL);
 	i = 0;
@@ -64,4 +64,11 @@ char	*get_next_line(int fd)
 	free(buffer);
 	buffer = temp;
 	return (ret_line);
+}
+
+void	free_stuff(char **stuf)
+{
+	free(*stuf);
+	(*stuf) = NULL;
+	
 }

@@ -19,11 +19,12 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 10
 # endif
 
 char	*get_next_line(int fd);
-char	*get_joined_buffer(char *buffer, int fd, long buf_size);
+char	*get_joined_buffer(char *buffer, int fd);
+void	free_stuff(char **stuf);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
