@@ -7,8 +7,8 @@ SRC_FILES = ft_printf \
 	  ft_ptr_add \
 	  ft_handle_num
 
-SRC_PATH = src/
-OBJ_PATH = obj/
+SRC_PATH = 
+OBJ_PATH =
 SRC = $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_PATH), $(addsuffix .o, $(SRC_FILES)))
 CC = gcc

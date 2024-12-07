@@ -16,6 +16,7 @@ $(OUTPUT) : $(OBJ)
 
 clean : 
 	rm -f $(OBJ)
+	rm -fr $(OBJ_DIR)
 
 fclean : clean
 	rm -f $(OUTPUT)
@@ -24,8 +25,13 @@ run : all
 	clear
 	./$(OUTPUT)
 
+test :
+	make fclean
+	clear
+	$(OUTPUT)
+
 $(OBJ_DIR)/%.o : %.c
 	mkdir -p $(OBJ_DIR)
 	$(CC) $(FLAGS) -c $< -o $@
 
-.PHONY : fclean all clean
+.PHONY : fclean all clean test

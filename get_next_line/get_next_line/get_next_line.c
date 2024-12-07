@@ -31,7 +31,10 @@ char	*get_joined_buffer(char *buffer, int fd)
 			return (free_stuff(&temp), NULL);
 		temp[i] = '\0';
 		if (!buffer)
+		{
 			buffer = ft_strdup(temp);
+			//free_stuff(&temp);
+		}
 		else
 			buffer = ft_strjoin(buffer, temp);
 		if (!buffer)
@@ -62,12 +65,14 @@ char	*get_next_line(int fd)
 	temp = ft_substr(buffer, i, ft_strlen(buffer) - i);
 	free_stuff(&buffer);
 	buffer = temp;
+	if(!buffer)
+		free_stuff(&buffer);
 	return (ret_line);
 }
 
 void	free_stuff(char **stuf)
 {
-	free(*stuf);
+	if (!(*stuf))
+		free(*stuf);
 	(*stuf) = NULL;
-	
 }
