@@ -1,5 +1,0 @@
-[1;31mError[0m in test 4: [0;36mget_next_line(5: "Invalid fd")[0m: 
-Memory leak: 0x7f5535a36010 - 1000001 bytes
-You failed to free the memory allocated at:
-Memory leak: 0x7f5535941010 - 1000001 bytes
-You failed to free the memory allocated at:

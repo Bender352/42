@@ -28,15 +28,6 @@ re :
 	@make fclean 
 	@make all
 
-run :	$(OBJ)
-	@$(CC) $(FLAGS) $(OBJ) -o $(OUTPUT)
-	@clear 
-	@make fclean 
-	@rm -f $(OUTPUT)
-	@make
-	@clear 
-	@./$(OUTPUT)
-
 $(NAME) : $(OBJ)
 	@ar rcs $(NAME) $^
 
