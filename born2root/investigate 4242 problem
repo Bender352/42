@@ -1,0 +1,28 @@
+sbruck@c1r5s4 ~ % curl -v http://localhost:4242
+*   Trying 127.0.0.1:4242...
+* Connected to localhost (127.0.0.1) port 4242 (#0)
+> GET / HTTP/1.1
+> Host: localhost:4242
+> User-Agent: curl/7.81.0
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Date: Sat, 07 Dec 2024 11:14:10 GMT
+< Server: WSGIServer/0.2 CPython/3.10.12
+< Content-Length: 13
+< Content-Type: text/html; charset=UTF-8
+< 
+* Closing connection 0
+{'ftpkg-srv'}%                                                                                                                                                        sbruck@c1r5s4 ~ % ps aux | grep python
+root        1237  0.0  0.1  41164 21768 ?        Ss   Nov22   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root        1447  0.0  0.1  39996 28936 ?        Ss   Nov22   1:43 /usr/bin/python3 /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+root        1464  0.0  0.1 118192 23676 ?        Ssl  Nov22   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root        2506  0.0  0.1  42408 28504 ?        S    Nov22   1:18 /usr/bin/python3 /usr/share/42/ftpkg-srv.py
+root        2509  0.0  0.2  53532 41704 ?        S    Nov22   4:00 /opt/venvs/deepthought-worker/bin/python /opt/venvs/deepthought-worker/bin/celery -A deepthought.worker worker --loglevel=DEBUG --without-gossip --without-mingle -c 1
+root        2512  0.0  0.2  53860 37132 ?        S    Nov22   0:00 /opt/venvs/deepthought-worker/bin/python /opt/venvs/deepthought-worker/bin/celery -A deepthought.worker worker --loglevel=DEBUG --without-gossip --without-mingle -c 1
+sbruck    423028  0.0  0.0   8848  2444 pts/1    S+   12:15   0:00 grep python
+
+less /usr/share/42/ftpkg-srv.py
+/usr/share/42/ftpkg-srv.py: Permission denied

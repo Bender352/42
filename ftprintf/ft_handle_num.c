@@ -32,3 +32,19 @@ void	ft_handle_num(char *base, long long int i, size_t *count)
 		ft_handle_num(base, i / base_nbr, count);
 	ft_put_char(base[i % base_nbr], count);
 }
+
+void	ft_handle_numptr(char *base, uintptr_t i, size_t *count)
+{
+	uintptr_t base_nbr;
+
+	base_nbr = ft_str_len(base);
+	if (i < base_nbr)
+	{
+		ft_put_char(base[i], count);
+		return ;
+	}
+	if (i / base_nbr != 0)
+		ft_handle_num(base, i / base_nbr, count);
+	ft_put_char(base[i % base_nbr], count);
+}
+

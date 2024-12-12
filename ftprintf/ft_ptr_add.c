@@ -14,15 +14,12 @@
 
 void	ft_ptr_add(void *ptr, size_t *count)
 {
-	if (ptr == NULL)
-	{
-		ft_print_str("(nil)", count);
-		return ;
-	}
-	ft_print_str("0x", count);
-	if ((unsigned long)ptr == ULONG_MAX)
-		ft_print_str("ffffffffffffffff", count);
-	else
-		ft_handle_num(ft_base_hex('l'), (unsigned long int)ptr, count);
-	return ;
+    if (ptr == NULL)
+    {
+        ft_print_str("(nil)", count);
+        return;
+    }
+
+    ft_print_str("0x", count); // Add "0x" prefix for pointers.
+    ft_handle_numptr(ft_base_hex('l'), (uintptr_t)ptr, count); // Properly handle 64-bit pointers.
 }

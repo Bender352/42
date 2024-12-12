@@ -9,8 +9,8 @@ SRC_FILES = ft_printf \
 
 SRC_PATH = 
 OBJ_PATH =
-SRC = $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
-OBJ = $(addprefix $(OBJ_PATH), $(addsuffix .o, $(SRC_FILES)))
+SRC = $(addsuffix .c, $(SRC_FILES))
+OBJ = $(addsuffix .o, $(SRC_FILES))
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 OUTPUT = prog.out
@@ -19,29 +19,29 @@ NAME = libftprintf.a
 all :	$(NAME)
 
 clean :
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean :
-	rm -f $(OBJ)
-	rm -f $(OUTPUT)
+	@rm -f $(NAME)
 
 re :
-	fclean all
+	@make fclean 
+	@make all
 
 run :	$(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(OUTPUT)
-	clear 
-	make fclean 
-	make
-	clear 
-	./$(OUTPUT)
+	@$(CC) $(FLAGS) $(OBJ) -o $(OUTPUT)
+	@clear 
+	@make fclean 
+	@rm -f $(OUTPUT)
+	@make
+	@clear 
+	@./$(OUTPUT)
 
 $(NAME) : $(OBJ)
-	ar rcs $(NAME) $^
+	@ar rcs $(NAME) $^
 
 $(OBJ_PATH)%.o :	$(SRC_PATH)%.c
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 
 .PHONY : all clean fclean re makerun
-
