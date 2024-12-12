@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:47:35 by sbruck            #+#    #+#             */
-/*   Updated: 2024/11/01 17:47:37 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/12 19:55:21 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # include <string.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct s_stack
 {
 	void			*content;
-	struct s_list	*next;
+	struct s_stack	*next;
 }					t_list;
 
 int					ft_atoi(const char *str);

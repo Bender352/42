@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 19:01:05 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/12 19:39:13 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/12 19:55:47 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 #include "unistd.h"
 #include "stdio.h"
 
-# ifndef S_LIST
-#define S_LIST
+# ifndef S_STACK
+#define S_STACK
 
-typedef struct s_list
+typedef struct s_stack
 {
     
-    struct s_list   *next;
-    struct s_list   *prev;
-}   t_list;
+    struct s_stack   *next;
+    struct s_stack   *prev;
+}   t_stack;
 
 
 # endif
