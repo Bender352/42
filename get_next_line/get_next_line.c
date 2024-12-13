@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:38:55 by sven              #+#    #+#             */
-/*   Updated: 2024/12/13 20:21:16 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/13 22:40:04 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_read_line(int fd, char **keep, char **tmp)
 	char	*buf;
 	int		r;
 
-	buf = malloc(sizeof(buf) * (BUFFER_SIZE + 1));
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return ;
 	r = 1;

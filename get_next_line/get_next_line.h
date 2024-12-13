@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:38:46 by sven              #+#    #+#             */
-/*   Updated: 2024/12/12 08:39:35 by sven             ###   ########.fr       */
+/*   Updated: 2024/12/13 22:34:38 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_read_line(int fd, char **keep, char **tmp);
 char	*ft_parse_line(char **keep, char **tmp);
 char	*get_before_newline(const char *s);
 char	*get_after_newline(const char *s);
+int     main(void);
 
 /* ---------- UTILS ---------- */
 int		contains_newline(const char *s);
