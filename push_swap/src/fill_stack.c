@@ -6,11 +6,11 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 20:37:59 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/12 21:51:17 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/13 21:53:33 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 t_stack **fill_stack(char    **str)
 {
@@ -21,10 +21,7 @@ t_stack **fill_stack(char    **str)
     i = 0;
     stack = malloc (sizeof(t_stack) * element_count(str));
     if (!stack)
-    {
-        stack = NULL;
         return (NULL);
-    }
     while (i < element_count(str))
     {
         temp = new_stack(atoi(str[i]));
@@ -33,7 +30,7 @@ t_stack **fill_stack(char    **str)
     return(stack);
 }
 
-static int element_count (char **str)
+int element_count (char **str)
 {
     int i;
 
@@ -42,7 +39,7 @@ static int element_count (char **str)
         i++;
     return (i);
 }
-
+/*
 static int	ft_atoi(const char *str)
 {
 	int	i;
@@ -67,7 +64,7 @@ static int	ft_atoi(const char *str)
 		i++;
 	}
 	return (res * s);
-}
+}*/
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
@@ -89,4 +86,18 @@ t_stack	*ft_lstlast(t_stack *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
+}
+
+void    free_stack(t_stack  **stack_a, t_stack **stack_b)
+{
+	if(stack_a && *stack_a)
+	{
+		*stack_a = NULL;
+		free(stack_a);
+	}
+	if(stack_b && *stack_b)
+	{
+		*stack_b = NULL;
+		free(stack_b);	
+	}
 }

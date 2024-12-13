@@ -1,32 +1,40 @@
-CC = cc
+CC = gcc
 FLAGS = -Wall -Werror -Wextra
-SRC_PATH = /src/
-OBJ_PATH = /obj/
-SRC_FILES = main
-SRC = $(appprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
-OBJ = $(appprefix $(OBJ_PATH), $(addsuffix .o, $(SRC_FILES)))
+SRC_PATH = ./src/
+OBJ_PATH = ./obj/
+SRC_FILES = fill_stack \
+            ft_split \
+            new_stack \
+            push_swap
+
+SRC_NAME = $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
+OBJ_NAME = $(addprefix $(OBJ_PATH), $(addsuffix .o, $(SRC_FILES)))
 OUTPUT = prog.out
 NAME = library.a
 
-all : $(NAME)
+all: $(NAME)
 
-clean :
-	@rm -rf obj
-
-fclean :
-	@rm -f $(NAME)
-	
-re:
-	@make clean
-	@make fclean
-	@make all
-
-$(NAME) :	$(OBJ)
+$(NAME): $(OBJ_NAME)
 	ar rcs $@ $^
 
-$(OBJ_PATH)%.o :	$(SRC_PATH)%.c
-	@mkdir -p obj
-	$(CC) $(FLAGS) -c $< -o $@
+$(OUTPUT): $(OBJ_NAME)
+	$(CC) $(FLAGS) -g -o $@ $^
 
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	mkdir -p $(OBJ_PATH)
+	$(CC) $(FLAGS) -g -c $< -o $@
 
-.PHONY : all clean fclean re
+run: $(OUTPUT)
+	./$(OUTPUT)
+
+clean:
+	rm -f $(OBJ_NAME)
+	rm -rf $(OBJ_PATH)
+
+fclean: clean
+	rm -f $(NAME)
+	rm -f $(OUTPUT)
+
+re: fclean all
+
+.PHONY: all clean fclean re run

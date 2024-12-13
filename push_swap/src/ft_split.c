@@ -6,11 +6,11 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 19:24:06 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/12 20:34:00 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/13 20:10:31 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 static int	count_words(const char *str, char c)
 {
@@ -59,11 +59,11 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	index = -1;
-	while (i <= ft_strlen(s))
+	while (i <= ft_strlen((char *) s))
 	{
 		if (s[i] != c && index < 0)
 			index = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		else if ((s[i] == c || i == ft_strlen((char *) s)) && index >= 0)
 		{
 			split[j++] = word_dup(s, index, i);
 			index = -1;
@@ -72,4 +72,16 @@ char	**ft_split(char const *s, char c)
 	}
 	split[j] = 0;
 	return (split);
+}
+
+size_t	ft_strlen (char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }
