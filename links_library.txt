@@ -1,2 +1,5 @@
+good reading material for PUSH_SWAP
+https://push_swap.simple.ink/resources-6af6a8eb190b46e3aad85e9a2d4486c7
 
+Very good C learning website
 https://www.learn-c.org/en/Linked_lists
