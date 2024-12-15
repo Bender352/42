@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 19:01:52 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/15 17:10:11 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/15 17:37:48 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int main(int arg, char **argv)
 {
-    static t_stack  **stack_a;
+    static t_stack  *stack_a;
 
-    stack_a = (t_stack **)malloc(sizeof(t_stack *));
+    stack_a = (t_stack *)malloc(sizeof(t_stack));
     if (!stack_a)
         return (0);
-    *stack_a = NULL;
     //static t_stack  **stack_b = NULL;
     char    **temp;
     arg = 2;
@@ -30,7 +29,7 @@ int main(int arg, char **argv)
         return (0);
     else
        temp = ft_split(argv[1], ' ');
-    stack_a = fill_stack(temp);
+    fill_stack(&stack_a, temp);
  
  /*   if (!stack_a) 
     {
@@ -38,6 +37,6 @@ int main(int arg, char **argv)
         return (1);
     } */
 
-    free_stack(stack_a, 0, 0);
+    free_stack(&stack_a, 0, 0);
     return (0);
 }

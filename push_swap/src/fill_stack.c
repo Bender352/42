@@ -6,13 +6,13 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 20:37:59 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/15 15:14:43 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/15 17:37:59 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack **fill_stack(char    **str)
+void fill_stack(t_stack **header, char **str)
 {
     t_stack **stack;
     t_stack *temp;
@@ -26,7 +26,7 @@ t_stack **fill_stack(char    **str)
 		ft_lstadd_back(stack, temp);
 		i++;
     }
-    return(free_stack(0, 0, temp), stack);
+    free_stack(0, 0, temp);
 }
 
 int element_count (char **str)
