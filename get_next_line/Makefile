@@ -4,7 +4,6 @@ SRC_PATH =
 OBJ_PATH = 
 SRC_FILES = get_next_line \
 			get_next_line_utils \
-			main
 
 SRC_NAME = $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
 OBJ_NAME = $(addprefix $(OBJ_PATH), $(addsuffix .o, $(SRC_FILES)))

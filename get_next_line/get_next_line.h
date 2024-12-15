@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 08:38:46 by sven              #+#    #+#             */
-/*   Updated: 2024/12/13 22:34:38 by sbruck           ###   ########.fr       */
+/*   Created: 2024/12/15 12:42:27 by sbruck            #+#    #+#             */
+/*   Updated: 2024/12/15 12:52:46 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_read_line(int fd, char **keep, char **tmp);
 char	*ft_parse_line(char **keep, char **tmp);
 char	*get_before_newline(const char *s);
 char	*get_after_newline(const char *s);
-int     main(void);
 
 /* ---------- UTILS ---------- */
 int		contains_newline(const char *s);

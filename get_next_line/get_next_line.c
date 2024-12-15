@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 08:38:55 by sven              #+#    #+#             */
-/*   Updated: 2024/12/13 22:40:04 by sbruck           ###   ########.fr       */
+/*   Created: 2024/12/15 12:42:45 by sbruck            #+#    #+#             */
+/*   Updated: 2024/12/15 12:52:45 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,7 @@ void	ft_read_line(int fd, char **keep, char **tmp)
 	{
 		r = read(fd, buf, BUFFER_SIZE);
 		if (r == -1)
-		{
-			ft_free_strs(&buf, keep, tmp);
-			return ;
-		}
+			return (ft_free_strs(&buf, keep, tmp));
 		buf[r] = '\0';
 		*tmp = ft_strdup(*keep);
 		ft_free_strs(keep, 0, 0);

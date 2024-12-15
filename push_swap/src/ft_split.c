@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 19:24:06 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/13 20:10:31 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/13 22:09:08 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	count_words(const char *str, char c)
 
 	i = 0;
 	trigger = 0;
+	if (!str)
+		return (0);
 	while (*str)
 	{
 		if (*str != c && trigger == 0)

@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 20:37:59 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/13 21:53:33 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/15 15:14:43 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ t_stack **fill_stack(char    **str)
     int i;
 
     i = 0;
-    stack = malloc (sizeof(t_stack) * element_count(str));
-    if (!stack)
-        return (NULL);
+	stack = NULL;
     while (i < element_count(str))
     {
         temp = new_stack(atoi(str[i]));
 		ft_lstadd_back(stack, temp);
+		i++;
     }
-    return(stack);
+    return(free_stack(0, 0, temp), stack);
 }
 
 int element_count (char **str)
@@ -35,12 +34,14 @@ int element_count (char **str)
     int i;
 
     i = 0;
+	if (!str)
+		return (0);
     while (str[i])
         i++;
     return (i);
 }
-/*
-static int	ft_atoi(const char *str)
+
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	s;
@@ -64,7 +65,7 @@ static int	ft_atoi(const char *str)
 		i++;
 	}
 	return (res * s);
-}*/
+}
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
@@ -88,7 +89,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (lst);
 }
 
-void    free_stack(t_stack  **stack_a, t_stack **stack_b)
+void    free_stack(t_stack  **stack_a, t_stack **stack_b, t_stack *stack)
 {
 	if(stack_a && *stack_a)
 	{
@@ -100,4 +101,9 @@ void    free_stack(t_stack  **stack_a, t_stack **stack_b)
 		*stack_b = NULL;
 		free(stack_b);	
 	}
+	if(stack)
+	{
+		free(stack);
+	}
+
 }
