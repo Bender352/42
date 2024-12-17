@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 20:37:59 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/15 17:37:59 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/17 20:33:01 by sven             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void fill_stack(t_stack **header, char **str)
+void fill_stack(t_stack **stack, char **str)
 {
-    t_stack **stack;
     t_stack *temp;
     int i;
 
@@ -22,11 +21,10 @@ void fill_stack(t_stack **header, char **str)
 	stack = NULL;
     while (i < element_count(str))
     {
-        temp = new_stack(atoi(str[i]));
+        temp = new_node(atoi(str[i]));
 		ft_lstadd_back(stack, temp);
 		i++;
     }
-    free_stack(0, 0, temp);
 }
 
 int element_count (char **str)
@@ -79,6 +77,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	}
 	last = ft_lstlast(*lst);
 	last->next = new;
+	new->prev = last;
 }
 t_stack	*ft_lstlast(t_stack *lst)
 {
