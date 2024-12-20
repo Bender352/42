@@ -4,9 +4,10 @@ SRC_PATH = ./src/
 OBJ_PATH = ./obj/
 SRC_FILES = fill_stack \
             ft_split \
-            new_stack \
+            new_node \
             push_swap \
-			stack_handling
+			stack_handling \
+			free_stuff
 
 SRC_NAME = $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
 OBJ_NAME = $(addprefix $(OBJ_PATH), $(addsuffix .o, $(SRC_FILES)))

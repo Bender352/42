@@ -6,7 +6,7 @@
 /*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 20:37:59 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/17 20:57:41 by sven             ###   ########.fr       */
+/*   Updated: 2024/12/18 14:23:14 by sven             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void fill_stack(t_stack **stack, char **str)
     int i;
 
     i = 0;
-	stack = NULL;
     while (i < element_count(str))
     {
         temp = new_node(atoi(str[i]));
@@ -86,23 +85,4 @@ t_stack	*ft_lstlast(t_stack *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
-}
-
-void    free_stack(t_stack  **stack_a, t_stack **stack_b, t_stack *stack)
-{
-	if(stack_a && *stack_a)
-	{
-		*stack_a = NULL;
-		free(stack_a);
-	}
-	if(stack_b && *stack_b)
-	{
-		*stack_b = NULL;
-		free(stack_b);	
-	}
-	if(stack)
-	{
-		free(stack);
-	}
-
 }

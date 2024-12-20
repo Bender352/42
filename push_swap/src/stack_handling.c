@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_handling.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/18 14:07:54 by sven              #+#    #+#             */
+/*   Updated: 2024/12/18 14:08:10 by sven             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void    r(t_stack **stack)
@@ -76,7 +88,7 @@ void    s(t_stack **stack)
     t_stack *second;
 
     if(stack == NULL || (*stack) == NULL)
-        return NULL;
+        return;
     first = (*stack);
     second = (*stack)->next;
     first->next = second->next;

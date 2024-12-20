@@ -6,7 +6,7 @@
 /*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 19:01:05 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/17 20:57:43 by sven             ###   ########.fr       */
+/*   Updated: 2024/12/18 20:11:51 by sven             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ size_t  ft_strlen(char *str);
 void    fill_stack(t_stack **header, char **str);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
-void    free_stack(t_stack  **stack_a, t_stack **stack_b, t_stack *stack);
+void    free_stack(t_stack  **stack_a, t_stack **stack_b);
+void    free_array(char **pntstr);
 int     element_count (char **str);
 int	    ft_atoi(const char *str);
 void    s(t_stack **stack);
