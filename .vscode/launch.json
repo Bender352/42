@@ -7,12 +7,11 @@
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",
-            "preLaunchTask": "make run",
             "request": "launch",
             "program": "${workspaceFolder}/push_swap/prog.out",
             "args": ["458 48 -98"],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/push_swap/src",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

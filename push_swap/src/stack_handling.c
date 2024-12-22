@@ -6,7 +6,7 @@
 /*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:07:54 by sven              #+#    #+#             */
-/*   Updated: 2024/12/18 14:08:10 by sven             ###   ########.fr       */
+/*   Updated: 2024/12/20 20:08:06 by sven             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,24 +61,27 @@ void    p(t_stack **stack_from, t_stack **stack_to)
     t_stack *a;
     t_stack *b;
 
-    if (!stack_from || (*stack_from) || !stack_to)
+    if (!stack_from && (*stack_from) && !stack_to)
         return;
     a = (*stack_from);
     b = (*stack_to);
     if(a->next)
     {
         a->next->prev = NULL;
-        (*stack_from) = a->next;
+        *stack_from = (*stack_from)->next;
     }
     else
         (*stack_from) = NULL;
-    if (!(*stack_to))
-        (*stack_to) = a;
+    if (!b)
+    {
+        *stack_to = a;
+        a->next = NULL;
+    }
     else
     {
         b->prev = a;
         a->next = b;
-        (*stack_to) = a;
+        *stack_to = a;
     } 
 }
 

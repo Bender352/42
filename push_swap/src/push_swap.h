@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 19:01:05 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/18 20:11:51 by sven             ###   ########.fr       */
+/*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
+/*   Updated: 2024/12/22 13:48:53 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 typedef struct s_stack
 {
     int             i;
+    int             cost_push;
+    int             cost_rotate;
     struct s_stack  *next;
     struct s_stack  *prev;
 }   t_stack;
@@ -35,7 +37,7 @@ int     main(int arg, char **argv);
 t_stack *new_node(int  i);
 char	**ft_split(char const *s, char c);
 size_t  ft_strlen(char *str);
-void    fill_stack(t_stack **header, char **str);
+int    fill_stack(t_stack **header, char **str);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void    free_stack(t_stack  **stack_a, t_stack **stack_b);

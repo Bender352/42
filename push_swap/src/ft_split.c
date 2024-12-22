@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 19:24:06 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/13 22:09:08 by sbruck           ###   ########.fr       */
+/*   Created: 2024/12/22 13:48:47 by sbruck            #+#    #+#             */
+/*   Updated: 2024/12/22 13:48:49 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	**ft_split(char const *s, char c)
 
 	split = malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!split || !s)
-		return (NULL);
+		return (free(split), NULL);
 	i = 0;
 	j = 0;
 	index = -1;

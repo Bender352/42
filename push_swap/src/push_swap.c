@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 19:01:52 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/18 20:15:30 by sven             ###   ########.fr       */
+/*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
+/*   Updated: 2024/12/22 13:48:52 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,37 @@ int main(int arg, char **argv)
 {
     static t_stack  *stack_a;
     static t_stack  *stack_b;
+    int total_nodes;
 
-    //stack_a = (t_stack *)malloc(sizeof(t_stack));
-    //stack_b = (t_stack *)malloc(sizeof(t_stack));
-    //if (!stack_a || !stack_b)
-    //    return (0);
-    //static t_stack  **stack_b = NULL;
     char    **temp;
     arg = 2;
     if (arg != 2 && argv[1][0])
         return (0);
     else
         temp = ft_split(argv[1], ' ');
-    fill_stack(&stack_a, temp);
+    total_nodes = fill_stack(&stack_a, temp);
+    printf("Total nodes :    %d", total_nodes);
+    r(&stack_a);
     free_stack(&stack_a, &stack_b);
     free_array(temp);
     temp = NULL;
     return (0);
+}
+
+void    sort_method(t_stack stack_a, t_stack stack_b, int total_nodes)
+{
+    if(total_nodes < 2)
+        return;
+    else if (total_nodes <= 3)
+        return;
+    else if (total_nodes <= 5)
+        return;
+    else if (total_nodes <= 100)
+        return;
+    else if (total_nodes <= 500)
+        return;
+}
+void    print_move(char *str)
+{
+    if (str = pa)
 }

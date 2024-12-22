@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sven <sven@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 20:37:59 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/18 14:23:14 by sven             ###   ########.fr       */
+/*   Created: 2024/12/22 13:48:17 by sbruck            #+#    #+#             */
+/*   Updated: 2024/12/22 13:48:53 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void fill_stack(t_stack **stack, char **str)
+int fill_stack(t_stack **stack, char **str)
 {
     t_stack *temp;
     int i;
@@ -24,6 +24,7 @@ void fill_stack(t_stack **stack, char **str)
 		ft_lstadd_back(stack, temp);
 		i++;
     }
+	return (i);
 }
 
 int element_count (char **str)
