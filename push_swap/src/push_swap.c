@@ -6,11 +6,18 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/22 13:48:52 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/24 12:40:45 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+-TO DO-
+In case of error, it must display "Error" followed by a ’\n’ on the standard error.
+Errors include for example: some arguments aren’t integers, some arguments are
+bigger than an integer and/or there are duplicates.
+*/
 
 int main(int arg, char **argv)
 {
@@ -38,8 +45,10 @@ void    sort_method(t_stack stack_a, t_stack stack_b, int total_nodes)
     if(total_nodes < 2)
         return;
     else if (total_nodes <= 3)
-        return;
+        sort3(stack_a);
     else if (total_nodes <= 5)
+        return;
+    else if (total_nodes <= 15)
         return;
     else if (total_nodes <= 100)
         return;
