@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:17 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 13:07:42 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/24 15:45:05 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	ft_atoi(const char *str)
 	}
 	return (res * s);
 }
+
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
@@ -79,6 +80,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	last->next = new;
 	new->prev = last;
 }
+
 t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
