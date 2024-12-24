@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 13:07:43 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/24 16:46:41 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void    r(t_stack **stack);
 void    rr(t_stack **stack);
 
 void    print_move(char *str);
+
+void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes);
 
 void    sort3(t_stack   **head);
 void    if_2(t_stack **head);

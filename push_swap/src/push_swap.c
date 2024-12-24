@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 12:40:45 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/24 17:19:36 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int main(int arg, char **argv)
     static t_stack  *stack_a;
     static t_stack  *stack_b;
     int total_nodes;
+    int *flag_err;
 
     char    **temp;
+    int flag_err = 0;
     arg = 2;
     if (arg != 2 && argv[1][0])
         return (0);
@@ -40,7 +42,7 @@ int main(int arg, char **argv)
     return (0);
 }
 
-void    sort_method(t_stack stack_a, t_stack stack_b, int total_nodes)
+void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes)
 {
     if(total_nodes < 2)
         return;
