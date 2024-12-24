@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:47:20 by sbruck           ###   ########.fr       */
+/*   Created: 2024/11/01 16:16:07 by sbruck            #+#    #+#             */
+/*   Updated: 2024/11/01 16:16:09 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "libft.h"
 
-int main (int arg, char **argv)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	t_list	*temp;
 
-    while (1)
-    {
-        usleep(100);
-    }
+	temp = lst;
+	while (temp)
+	{
+		f(temp->content);
+		temp = temp->next;
+	}
 }
-//https://github.com/lai-jia-jing/minitalk/blob/main/server.c
+/*
+Very important it:
+applies the function
+’f’ on THE CONTENT of each node.
+*/

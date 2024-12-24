@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 16:46:41 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/24 19:51:58 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_stack
 {
     int             i;
+    int             index;
     int             cost_push;
     int             cost_rotate;
     struct s_stack  *next;

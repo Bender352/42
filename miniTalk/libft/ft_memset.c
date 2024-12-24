@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:47:20 by sbruck           ###   ########.fr       */
+/*   Created: 2024/10/31 13:48:03 by sbruck            #+#    #+#             */
+/*   Updated: 2024/10/31 13:48:05 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "libft.h"
 
-int main (int arg, char **argv)
+void	*ft_memset(void *s, int c, size_t len)
 {
+	size_t	i;
+	char	*bloc;
 
-    while (1)
-    {
-        usleep(100);
-    }
+	i = 0;
+	bloc = (char *)s;
+	while (i < len)
+	{
+		bloc[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }
-//https://github.com/lai-jia-jing/minitalk/blob/main/server.c

@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 17:19:36 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/24 19:51:56 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int arg, char **argv)
     int *flag_err;
 
     char    **temp;
-    int flag_err = 0;
+    *flag_err = 0;
     arg = 2;
     if (arg != 2 && argv[1][0])
         return (0);

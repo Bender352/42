@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:47:20 by sbruck           ###   ########.fr       */
+/*   Created: 2024/10/31 13:43:34 by sbruck            #+#    #+#             */
+/*   Updated: 2024/10/31 13:43:36 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "libft.h"
 
-int main (int arg, char **argv)
+void	*ft_calloc(size_t count, size_t size)
 {
+	void	*ptr;
 
-    while (1)
-    {
-        usleep(100);
-    }
+	if (count != 0 && size > SIZE_MAX / count)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
-//https://github.com/lai-jia-jing/minitalk/blob/main/server.c

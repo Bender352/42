@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:47:20 by sbruck           ###   ########.fr       */
+/*   Created: 2024/10/31 13:44:40 by sbruck            #+#    #+#             */
+/*   Updated: 2024/10/31 13:44:42 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "miniTalk.h"
-
-int main (int arg, char **argv)
+int	ft_isascii(int i)
 {
-
-    while (1)
-    {
-        usleep(100);
-    }
+	if (i >= 0 && i <= 127)
+		return (1);
+	else
+		return (0);
 }
-//https://github.com/lai-jia-jing/minitalk/blob/main/server.c

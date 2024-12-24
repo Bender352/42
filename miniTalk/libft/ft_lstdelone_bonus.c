@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:47:20 by sbruck           ###   ########.fr       */
+/*   Created: 2024/11/01 15:08:40 by sbruck            #+#    #+#             */
+/*   Updated: 2024/11/01 17:43:42 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "libft.h"
 
-int main (int arg, char **argv)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-
-    while (1)
-    {
-        usleep(100);
-    }
+	del(lst->content);
+	free(lst);
 }
-//https://github.com/lai-jia-jing/minitalk/blob/main/server.c

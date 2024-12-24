@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:47:20 by sbruck           ###   ########.fr       */
+/*   Created: 2024/10/31 13:48:17 by sbruck            #+#    #+#             */
+/*   Updated: 2024/10/31 13:48:19 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "libft.h"
 
-int main (int arg, char **argv)
+void	ft_putchar_fd(char c, int fd)
 {
-
-    while (1)
-    {
-        usleep(100);
-    }
+	write(fd, &c, 1);
 }
-//https://github.com/lai-jia-jing/minitalk/blob/main/server.c

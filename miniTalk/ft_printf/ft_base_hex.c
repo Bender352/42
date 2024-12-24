@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_base_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:47:20 by sbruck           ###   ########.fr       */
+/*   Created: 2024/11/09 18:49:42 by sbruck            #+#    #+#             */
+/*   Updated: 2024/11/09 18:49:44 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "ft_printf.h"
 
-int main (int arg, char **argv)
+char	*ft_base_hex(char c)
 {
-
-    while (1)
-    {
-        usleep(100);
-    }
+	if (c == 'l')
+		return ("0123456789abcdef");
+	if (c == 'u')
+		return ("0123456789ABCDEF");
+	return (0);
 }
-//https://github.com/lai-jia-jing/minitalk/blob/main/server.c

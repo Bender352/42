@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_put_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbruck <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:47:20 by sbruck           ###   ########.fr       */
+/*   Created: 2024/11/09 18:51:19 by sbruck            #+#    #+#             */
+/*   Updated: 2024/11/09 18:51:21 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "ft_printf.h"
 
-int main (int arg, char **argv)
+void	ft_put_char(char c, size_t *count_char)
 {
-
-    while (1)
-    {
-        usleep(100);
-    }
+	write(1, &c, 1);
+	*count_char = *count_char + 1;
 }
-//https://github.com/lai-jia-jing/minitalk/blob/main/server.c

@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:17 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 16:48:35 by sbruck           ###   ########.fr       */
+/*   Updated: 2024/12/24 19:52:06 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int fill_stack(t_stack **stack, char **str)
     i = 0;
     while (i < element_count(str))
     {
-        temp = new_node(atoi(str[i]));
+        temp = new_node(ft_atoi(str[i]));
 		temp->index = i;
 		ft_lstadd_back(stack, temp);
 		i++;
