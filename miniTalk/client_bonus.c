@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 19:03:56 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/03 23:22:14 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/03 23:22:13 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "client.h"
+#include "client_bonus.h"
 
 int main (int arg, char **argv)
 {
@@ -36,7 +36,7 @@ void    send_bit(int pid, int i)
 {
 	int	bit;
 
-	bit = 7;
+	bit = 31;
     while (bit >= 0)
     {
         if ((i >> bit) & 1)

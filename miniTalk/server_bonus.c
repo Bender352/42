@@ -6,15 +6,15 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/03 23:22:07 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/03 23:17:28 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server_bonus.h"
+#include "server.h"
 
 void	handle_signal(int sig, siginfo_t *i, void *context)
 {
-	static int	bit[2] = {0, 8};
+	static int	bit[2] = {0, 32};
 
 	(void)i;
 	(void)context;
@@ -30,7 +30,7 @@ void	handle_signal(int sig, siginfo_t *i, void *context)
 	if (bit[1] == 0)
 	{
 		ft_printf("%c", bit[0]);
-		bit[1] = 8;
+		bit[1] = 32;
 		bit[0] = 0;
 	}
 }

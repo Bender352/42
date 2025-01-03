@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   server_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:25:33 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/03 23:22:13 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/03 23:22:12 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#ifndef SERVER_BONUS_H
+# define SERVER_BONUS_H
 
     #include <unistd.h>
     #include <signal.h>
