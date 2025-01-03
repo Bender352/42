@@ -6,11 +6,11 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 19:03:56 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 20:32:44 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/03 19:16:39 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniTalk.h"
+#include "client.h"
 
 int main (int arg, char **argv)
 {
