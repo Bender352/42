@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 19:03:56 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/03 19:16:39 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/03 20:30:02 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main (int arg, char **argv)
         send_bit(pid, argv[2][i]);
         i++;
     }
+    return (0);
 }
 
 void    send_bit(int pid, int i)

@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 19:54:44 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/03 19:29:08 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/03 20:37:26 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	handle_signal(int sig, siginfo_t *i, void *context)
     if (sig == SIGUSR1)
         bit[0] |= 1;
     else
+	{
         bit[0] |= 0;
+	}
 	bit[1]++;
 	if (bit[1] == 8)
 	{
