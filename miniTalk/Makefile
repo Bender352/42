@@ -52,10 +52,10 @@ clean :
 	clear
 
 fclean :
-	@rm -f client.out
-	@rm -f server.out
-	@rm -f client_bonus.out
-	@rm -f server_bonus.out
+	@rm -f client
+	@rm -f server
+	@rm -f client_bonus
+	@rm -f server_bonus
 	@make fclean -C $(DIR_LIBFT)
 	@make fclean -C $(DIR_PRINTF)
 	clear
