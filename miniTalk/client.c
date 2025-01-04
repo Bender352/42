@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 19:03:56 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/03 23:22:14 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/04 01:52:31 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int main (int arg, char **argv)
 
     if (arg != 3)
     {
-        ft_printf("%s", "not the right input format");
+        ft_printf("%s", "not the right input format\n");
+        return (0);
     }
     i = 0;
     pid = ft_atoi(argv[1]);
@@ -47,7 +48,7 @@ void    send_bit(int pid, int i)
         {
 			kill(pid, SIGUSR2);
         }
-        usleep(100);
+        usleep(450);
 		bit--;
 	}
 }

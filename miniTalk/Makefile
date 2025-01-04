@@ -43,24 +43,26 @@ server_bonus: $(OBJ_SERVER_BONUS) lib_libft lib_printf
 	$(CC) $(FLAGS) $(OBJ_SERVER_BONUS) $(DIR_LIBFT)libft.a $(DIR_PRINTF)printf.a -o server_bonus.out
 
 clean :
-	rm -f client.o
-	rm -f server.o
-	rm -f client_bonus.o
-	rm -f server_bonus.o
-	make clean -C $(DIR_LIBFT)
-	make clean -C $(DIR_PRINTF)
+	@rm -f client.o
+	@rm -f server.o
+	@rm -f client_bonus.o
+	@rm -f server_bonus.o
+	@make clean -C $(DIR_LIBFT)
+	@make clean -C $(DIR_PRINTF)
+	clear
 
 fclean :
-	rm -f client.out
-	rm -f server.out
-	rm -f client_bonus.out
-	rm -f server_bonus.out
-	make fclean -C $(DIR_LIBFT)
-	make fclean -C $(DIR_PRINTF)
+	@rm -f client.out
+	@rm -f server.out
+	@rm -f client_bonus.out
+	@rm -f server_bonus.out
+	@make fclean -C $(DIR_LIBFT)
+	@make fclean -C $(DIR_PRINTF)
+	clear
 
 re :
-	make clean
-	make fclean
+	@make clean
+	@make fclean
 	make all
 	
 .PHONY : clean fclean all re m b

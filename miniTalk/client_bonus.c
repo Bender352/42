@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 19:03:56 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/03 23:22:13 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/04 02:29:56 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main (int arg, char **argv)
 {
-    int pid;
+    int server_pid;
     size_t  i;
 
     if (arg != 3)
@@ -22,17 +22,19 @@ int main (int arg, char **argv)
         ft_printf("%s", "not the right input format");
     }
     i = 0;
-    pid = ft_atoi(argv[1]);
+    server_pid = ft_atoi(argv[1]);
+    send_pid(server_pid);
     while (argv[2][i])
     {
-        send_bit(pid, argv[2][i]);
+        send_bit(server_pid, argv[2][i]);
         i++;
     }
-    send_bit(pid, '\0');
+    send_bit(server_pid, '\0');
+    list_ack();
     return (0);
 }
 
-void    send_bit(int pid, int i)
+void    send_bit(int server_pid, int i)
 {
 	int	bit;
 
@@ -41,13 +43,51 @@ void    send_bit(int pid, int i)
     {
         if ((i >> bit) & 1)
         {
-			kill(pid, SIGUSR1);
+			kill(server_pid, SIGUSR1);
         }
 		else
         {
-			kill(pid, SIGUSR2);
+			kill(server_pid, SIGUSR2);
         }
-        usleep(100);
+        usleep(500);
 		bit--;
 	}
+}
+
+void    send_pid(int server_pid)
+{
+	int	bit;
+    char    *client_pid;
+    int i;
+
+    client_pid = ft_itoa(getpid());
+	bit = 31;
+    i = 0;
+    while (client_pid[i])
+    {
+        send_bit(server_pid, client_pid[i]);
+    }
+    send_bit(server_pid, 4);
+}
+void	handle_signal(int sig, siginfo_t *i, void *context)
+{
+    (void)i;
+	(void)context;
+    if (sig == SIGUSR1)
+	{
+        ft_printf("%s", "ACK");
+        exit;
+	}
+}
+void    list_ack()
+{
+    struct sigaction	s;
+
+    s.sa_sigaction = handle_signal;
+    s.sa_flags = SA_SIGINFO;
+    sigaction(SIGUSR1, &s, NULL);
+    sigaction(SIGUSR2, &s, NULL);
+    while (1)
+        pause();
+    return (0);
 }
