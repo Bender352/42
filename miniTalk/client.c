@@ -5,50 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 19:03:56 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/04 01:52:31 by sbruck           ###   ########.fr       */
+/*   Created: 2025/01/04 19:21:55 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/04 20:49:41 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "client.h"
 
-int main (int arg, char **argv)
-{
-    int pid;
-    size_t  i;
+int	g_response = 0;
 
-    if (arg != 3)
-    {
-        ft_printf("%s", "not the right input format\n");
-        return (0);
-    }
-    i = 0;
-    pid = ft_atoi(argv[1]);
-    while (argv[2][i])
-    {
-        send_bit(pid, argv[2][i]);
-        i++;
-    }
-    send_bit(pid, '\0');
-    return (0);
+void	ft_response(int signum)
+{
+	g_response = 1;
+	(void)signum;
 }
 
-void    send_bit(int pid, int i)
+void	ft_send_bit(int pid, int bit)
 {
-	int	bit;
+	int	signal;
 
-	bit = 7;
-    while (bit >= 0)
-    {
-        if ((i >> bit) & 1)
-        {
-			kill(pid, SIGUSR1);
-        }
-		else
-        {
-			kill(pid, SIGUSR2);
-        }
-        usleep(450);
-		bit--;
+	if (bit == 1)
+		signal = SIGUSR1;
+	else
+		signal = SIGUSR2;
+	if (kill(pid, signal) == -1)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
 	}
+}
+
+void	ft_send_char(int pid, char c)
+{
+	int	i;
+
+	i = BIT_LEN - 1;
+	while (i >= 0)
+	{
+		ft_send_bit(pid, (c >> i) & 1);
+		usleep(100);
+		i--;
+	}
+	while (!g_response)
+		;
+	g_response = 0;
+}
+
+void	ft_send_str(int pid, char *str)
+{
+	while (*str)
+		ft_send_char(pid, *str++);
+	ft_send_char(pid, '\0');
+}
+
+int	main(const int argc, char **argv)
+{
+	pid_t	pid;
+
+	if (argc != 3)
+	{
+		ft_putstr_fd("Usage: ./client <pid> <string>\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	pid = ft_atoi(argv[1]);
+	if (pid <= 0)
+	{
+		ft_putstr_fd("Invalid PID\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	signal(SIGUSR2, ft_response);
+	ft_send_str(pid, argv[2]);
+	return (0);
 }

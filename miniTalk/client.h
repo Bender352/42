@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 18:30:26 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/03 19:16:38 by sbruck           ###   ########.fr       */
+/*   Created: 2025/01/04 19:22:27 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/04 20:32:45 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,8 @@
         
     void    send_bit(int pid, int bit);
 
+#endif
+
+#ifndef BIT_LEN
+# define BIT_LEN 8
 #endif
