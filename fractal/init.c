@@ -5,10 +5,27 @@ static void    malloc_error(void)
     perror("Problems with malloc");
     exit(EXIT_FAILURE);
 }
+void    data_init(t_fractal *fractal)
+{
+    fractal->escape_value = ESCAPE_VALUE;
+    fractal->max_iteration = MAX_INTERATION;
+    fractal->shift_x = 0;
+    fractal->shift_y = 0;
+    fractal->zoom = 1;
+    fractal->mouse_pos_x = 0;
+    fractal->mouse_pos_y = 0;
+}
+static void    events_init(t_fractal *fractal)
+{
+    mlx_hook(fractal->window, KeyPress, KeyPressMask, key_handler, fractal);
+    mlx_hook(fractal->window, ButtonPress, ButtonPressMask, mouse_handler, fractal);
+    mlx_hook(fractal->window, DestroyNotify, StructureNotifyMask, close_handler, fractal);
+}
 
 void fractal_init(t_fractal *fractal)
 {
     fractal->conection = mlx_init();
+    data_init(fractal);
 
     if ( NULL == fractal->conection)
         malloc_error();
@@ -40,9 +57,10 @@ void fractal_init(t_fractal *fractal)
                                                 &fractal->img.line_len,
                                                 &fractal->img.endian);
     
-    //events_init();
+    events_init(fractal);
     //data_init();
 
     
 
 }
+

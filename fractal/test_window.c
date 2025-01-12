@@ -8,8 +8,8 @@ int main(int ac, char **av)
     {
         fractal.name = av[1];
         fractal_init(&fractal);
-
-    //    fractal_render(&fractal);
+        fractal_render(&fractal);
+        mlx_loop(fractal.conection);
 
     //    mlx_loop(fractal.conection);
     }

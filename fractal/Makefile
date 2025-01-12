@@ -6,8 +6,12 @@ MINIMLXLIB = lib/minilibx-linux/libmlx_linux.a
 FTPRINTF = -Llib/ftprintf -lftprintf
 LIBFT = -Llib/libft -lft
 #SRC = test_window.c
-SRC = 	events_test.c \
-		init.c
+SRC = 	render.c \
+		init.c \
+		math_utils.c \
+		fractal.c \
+		events.c \
+		test_window.c
 OBJ = $(SRC:.c=.o)
 NAME = fractol
 
@@ -24,7 +28,9 @@ fclean :
 	@rm -f $(NAME)
 
 re :
-	fclean all
+	make fclean
+	make clean
+	make
 
 $(NAME): $(OBJ)
 	@make -C lib/ftprintf

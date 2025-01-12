@@ -1,4 +1,4 @@
-#include "fractal.h"
+
 
 typedef struct	s_vars {
 	void	*mlx;

@@ -14,8 +14,11 @@ SRCSB = ft_lstnew_bonus.c ft_lstadd_front_bonus.c \
         ft_lstclear_bonus.c ft_lstiter_bonus.c \
         ft_lstmap_bonus.c
 
+SRC_OWN = ft_atodl.c
+
 OBJS = ${SRCS:.c=.o}
 OBJSB = ${SRCSB:.c=.o}
+OBJ_OWN = ${SRC_OWN:.c=.o}
 NAME = libft.a
 LIBC = ar rcs
 CC = cc
@@ -26,8 +29,8 @@ CFLAGS = -Wall -Wextra -Werror
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 # Creating the library with all object files (including bonus)
-${NAME}: ${OBJS} ${OBJSB}
-	${LIBC} ${NAME} ${OBJS} ${OBJSB}
+${NAME}: ${OBJS} ${OBJSB} ${OBJ_OWN}
+	${LIBC} ${NAME} ${OBJS} ${OBJSB} ${OBJ_OWN}
 
 all: ${NAME}
 
@@ -36,7 +39,7 @@ bonus: ${OBJSB}
 	${LIBC} ${NAME} ${OBJSB}
 
 clean:
-	${RM} ${OBJS} ${OBJSB}
+	${RM} ${OBJS} ${OBJSB} ${OBJ_OWN}
 
 fclean: clean
 	${RM} ${NAME}
