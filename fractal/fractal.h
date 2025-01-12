@@ -59,6 +59,8 @@
         double  zoom;
         double  mouse_pos_x;
         double  mouse_pos_y;
+        double  julia_x;
+        double  julia_y;
         int     max_iteration;
         char    *name;
         double  escape_value;
