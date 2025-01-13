@@ -5,37 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/12 21:14:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/12 21:26:39 by sbruck           ###   ########.fr       */
+/*   Created: 2025/01/13 22:44:28 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/13 22:44:30 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-double  ft_atodl(const char *str)
+double ft_atodl(const char *str)
 {
-    long    int_part;
-    double  fractional_part;
-    double  pow;
-    int     sign;
+    long int_part = 0;
+    double fractional_part = 0.0;
+    double pow = 1.0;
+    int sign = 1;
 
-    int_part = 0;
-    fractional_part = 0;
-    pow = 1;
-    sign = 1;
-    while(((*str >= 9 && *str <= 13) || 32 == *str))
+    while (((*str >= 9 && *str <= 13) || 32 == *str))
         str++;
-    while('+' == *str || '-' == *str)
-        if('-' == *str++)
+    while ('+' == *str || '-' == *str)
+        if ('-' == *str++)
             sign = -sign;
     while (*str != '.' && *str)
-        int_part = (int_part * 10) + int_part + (*str++ - '0');
-    if ('.' == *str)
+        int_part = (int_part * 10) + (*str++ - '0');
+    if (*str == '.')
         str++;
     while (*str)
     {
-        pow = pow / 10;
-        fractional_part = fractional_part + (*str++ - '0' * pow);
+        fractional_part = fractional_part * 10 + (*str++ - '0');
+        pow *= 10;
     }
-    return ((int_part + fractional_part) * sign);
+    return (int_part + fractional_part / pow) * sign;
 }
+/*
+#include <stdio.h>
+#include <stdlib.h>
+int main(int ac, char **av)
+{
+    if (ac > 1)
+    {
+        printf("Input: %s\n", av[1]);
+        printf("Converted value: %f\n", ft_atodl(av[1]));
+    }
+    else
+    {
+        printf("No input provided.\n");
+    }
+
+    return 0;
+}
+*/

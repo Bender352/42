@@ -2,21 +2,19 @@
 
 int main(int ac, char **av)
 {
-    t_fractal   fractal;
+    t_fractal   f;
 
     if ((2 == ac && !ft_strncmp(av[1], "mandelbrot", 10)) || (4 == ac && !ft_strncmp(av[1], "julia", 5)))
     {
         if (!ft_strncmp(av[1], "julia", 5))
         {
-            fractal.julia_x = ft_atodl(av[2]);
-            fractal.julia_y = ft_atodl(av[3]);
+            f.julia_x = ft_atodl(av[2]);
+            f.julia_y = ft_atodl(av[3]);
         }
-        fractal.name = av[1];
-        fractal_init(&fractal);
-        fractal_render(&fractal);
-        mlx_loop(fractal.conection);
-
-    //    mlx_loop(fractal.conection);
+        f.name = av[1];
+        fractal_init(&f);
+        fractal_render(&f);
+        mlx_loop(f.conection);
     }
     else
     {

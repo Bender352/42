@@ -79,6 +79,8 @@
     void    fractal_render(t_fractal *fractal);
     int     close_handler (t_fractal *fractal);
     int mouse_handler(int button, int x, int y, t_fractal *fractal);
+    void    handle_pixel_mandel(int x, int y, t_fractal *f);
+    void    handle_pixel_julia(int x, int y, t_fractal *f);
 
     double  map (double nbr, double new_min, double new_max, double old_max);
     t_complex   sum_complex( t_complex z1, t_complex z2);

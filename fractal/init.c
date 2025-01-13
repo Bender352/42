@@ -5,64 +5,46 @@ static void    malloc_error(void)
     perror("Problems with malloc");
     exit(EXIT_FAILURE);
 }
-void    data_init(t_fractal *fractal)
+void    data_init(t_fractal *f)
 {
-    fractal->escape_value = ESCAPE_VALUE;
-    fractal->max_iteration = MAX_INTERATION;
-    fractal->shift_x = 0;
-    fractal->shift_y = 0;
-    fractal->zoom = 1;
-    fractal->mouse_pos_x = 0;
-    fractal->mouse_pos_y = 0;
-    fractal->julia_x = 0;
-    fractal->julia_y = 0;
+    f->escape_value = ESCAPE_VALUE;
+    f->max_iteration = MAX_INTERATION;
+    f->conection = NULL;
+    f->shift_x = 0;
+    f->shift_y = 0;
+    f->zoom = 1;
+    f->mouse_pos_x = 0;
+    f->mouse_pos_y = 0;
 }
-static void    events_init(t_fractal *fractal)
+static void    events_init(t_fractal *f)
 {
-    mlx_hook(fractal->window, KeyPress, KeyPressMask, key_handler, fractal);
-    mlx_hook(fractal->window, ButtonPress, ButtonPressMask, mouse_handler, fractal);
-    mlx_hook(fractal->window, DestroyNotify, StructureNotifyMask, close_handler, fractal);
+    mlx_hook(f->window, KeyPress, KeyPressMask, key_handler, f);
+    mlx_hook(f->window, ButtonPress, ButtonPressMask, mouse_handler, f);
+    mlx_hook(f->window, DestroyNotify, StructureNotifyMask, close_handler, f);
 }
 
-void fractal_init(t_fractal *fractal)
+void fractal_init(t_fractal *f)
 {
-    fractal->conection = mlx_init();
-    data_init(fractal);
-
-    if ( NULL == fractal->conection)
+    data_init(f);
+    f->conection = mlx_init();
+    if ( NULL == f->conection)
         malloc_error();
-
-    fractal->window = mlx_new_window(fractal->conection,
-                                    WIDTH,
-                                    HIGHT,
-                                    fractal->name); 
-
-    if( NULL == fractal->window)
+    f->window = mlx_new_window(f->conection, WIDTH, HIGHT, f->name); 
+    if( NULL == f->window)
     {
-        mlx_destroy_display(fractal->conection);
-        free (fractal->conection);
+        mlx_destroy_display(f->conection);
+        free (f->conection);
         malloc_error();
     }
-    fractal->img.img_ptr = mlx_new_image(fractal->conection,
-                                        WIDTH,
-                                        HIGHT);
-
-    if( NULL == fractal->img.img_ptr)
+    f->img.img_ptr = mlx_new_image(f->conection, WIDTH, HIGHT);
+    if( NULL == f->img.img_ptr)
     {
-        mlx_destroy_window(fractal->conection, fractal->window);
-        mlx_destroy_display(fractal->conection);
-        free (fractal->conection);
+        mlx_destroy_window(f->conection, f->window);
+        mlx_destroy_display(f->conection);
+        free (f->conection);
         malloc_error();
     }
-    fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,
-                                                &fractal->img.bpp,
-                                                &fractal->img.line_len,
-                                                &fractal->img.endian);
-    
-    events_init(fractal);
-    //data_init();
-
-    
-
+    f->img.pixels_ptr = mlx_get_data_addr(f->img.img_ptr, &f->img.bpp, &f->img.line_len, &f->img.endian);
+    events_init(f);
 }
 
