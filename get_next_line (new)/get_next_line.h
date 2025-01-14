@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 23:19:40 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/13 23:19:46 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/14 09:49:18 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,20 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# ifndef BUFFER_SIZE
+
 #  define BUFFER_SIZE BUFSIZ
-# endif
 
 # if BUFFER_SIZE > 9223372036854775806
-#  undef BUFFER_SIZE
-#  define BUFFER_SIZE 0
+    # undef BUFFER_SIZE
+    # define BUFFER_SIZE 9223372036854775806
+# endif
+
+typedef struct s_list
+{
+    char    *content;
+    struct s_list  *next;
+}   t_list;
+
+void    new_list(t_list *list);
+
 # endif
