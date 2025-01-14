@@ -6,62 +6,71 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 09:35:11 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/14 12:32:25 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/14 18:25:15 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_list   *new_list()
+t_list   *new_node()
 {
-    t_list  *new_list;
+    t_list  *new_node;
 
-    new_list = malloc(sizeof(t_list));
-    if(!new_list)
+    new_node = malloc(sizeof(t_list));
+    if(!new_node)
         return (NULL);
-    new_list->content = NULL;
-    new_list->next = NULL;
-    return (new_list);
+    new_node->content = NULL;
+    new_node->next = NULL;
+    new_node->flag_eof = 0;
+    new_node->flag_nl = 0;
+    new_node->start_sub = 0;
+    new_node->stop_sub = 0;
+    return (new_node);
 }
 
-void    add_node(t_list **list, char* content)
+void    add_node(t_list **list, int nl, int eof, char *buf)
 {
     t_list  *new;
     t_list  *current;
     
-    if (!list || !content)
+    if (!list)
         return;
-    new = new_list();
+    new = new_node();
     if (!new)
         return;
-    new->content = content;
-    if (!(*list))
-        *list = new;
-    else
-    {
-        current = *list;
-        while (current->next)
-            current = current->next;
-        current->next = new;
-    }
+    (*list)->flag_eof = eof;
+    (*list)->flag_nl = nl;
+    (*list)->content = buf;
+    if (1 == eof)
+        return;
+    current = *list;
+    while (current->next)
+        current = current->next;
+    current->next = new;
 }
 
 void    delete_first_node (t_list **list)
 {
     t_list  *buf;
    
-    buf = *list;
-    *list = (*list)->next;
-    free(buf->content);
-    free((buf));
+    if(1 == (*list)->flag_eof)
+    {
+        free(*list);
+    }
+    else
+    {
+        buf = *list;
+        *list = (*list)->next;
+        free((buf));
+    }
 }
 
 char    *merge_str (char *str, char *new)
 {
     size_t  str_len;
     size_t  new_len;
-    size_t  i;
-    size_t  j;
+    int     i;
+    int     j;
     char    *str_return;
 
     str_len = len_str(str);
@@ -78,7 +87,8 @@ char    *merge_str (char *str, char *new)
         str_return[++i] = new[j];
     free (str);
     free (new);
-    return (str_return[j] = 0);
+    str_return[j] = 0;
+    return (str_return);
 }
 
 size_t  len_str(char *str)
