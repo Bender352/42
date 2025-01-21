@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_window.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 18:40:24 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/21 18:40:25 by sbruck           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractal.h"
 
 int main(int ac, char **av)
@@ -13,7 +25,7 @@ int main(int ac, char **av)
         }
         f.name = av[1];
         fractal_init(&f);
-        fractal_render(&f);
+        render_frac(&f);
         mlx_loop(f.conection);
     }
     else

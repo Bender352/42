@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractal.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 18:39:47 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/21 18:39:47 by sbruck           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTAL_H
 # define FRACTAL_H
 
@@ -16,7 +28,7 @@
     # define ESCAPE_VALUE 4;
     # define MAX_INTERATION 42;
 
-    # define ERROR_MESSAGE "Please enter\n\t\033[33m\"./fractol mandelbrot\"\033[0m or\n\t\033[33m\"./julia, <value1>, <value2>\"\033[0m\n"
+    # define ERROR_MESSAGE "Please enter\n\t\033[1;35;5;47m\"./fractol mandelbrot\"\033[0m or\n\t\033[1;35;5;47m\"./julia, <value1>, <value2>\"\033[0m\n"
 
     # define BLACK    0x000000
     # define WHITE    0xFFFFFF
@@ -54,6 +66,12 @@
         void    *conection;
         void    *window;
         void    *image;
+        int     x;
+        int     y;
+        int     start_y;
+        int     end_y;
+        int     start_x;
+        int     end_x;
         double  shift_x;
         double  shift_y;
         double  zoom;
@@ -76,7 +94,7 @@
     int    key_handler (int keysym, t_fractal *fractal);
   
     void    fractal_init(t_fractal *fractal);
-    void    fractal_render(t_fractal *fractal);
+    void    render_frac(t_fractal *fractal);
     int     close_handler (t_fractal *fractal);
     int mouse_handler(int button, int x, int y, t_fractal *fractal);
     void    handle_pixel_mandel(int x, int y, t_fractal *f);

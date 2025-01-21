@@ -9,7 +9,6 @@ LIBFT = -Llib/libft -lft
 SRC = 	render.c \
 		init.c \
 		math_utils.c \
-		fractal.c \
 		events.c \
 		test_window.c
 OBJ = $(SRC:.c=.o)

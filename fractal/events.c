@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   events.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 18:40:35 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/21 18:40:36 by sbruck           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractal.h"
 
 int key_handler (int keysym, t_fractal *f)
@@ -21,7 +33,7 @@ int key_handler (int keysym, t_fractal *f)
         f->shift_y -= 0.1 * f->zoom;
     else if (keysym == XK_Up)
         f->shift_y += 0.1 * f->zoom;
-    fractal_render(f);
+    render_frac(f);
     return (0);
 }
 
@@ -45,6 +57,6 @@ int mouse_handler(int button, int x, int y, t_fractal *f)
         f->zoom *= 0.95;
    (void) x;
    (void) y;
-    fractal_render(f);
+    render_frac(f);
     return(0);
 }

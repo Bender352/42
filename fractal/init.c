@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 18:39:52 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/21 18:39:53 by sbruck           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractal.h"
 
 static void    malloc_error(void)
@@ -15,6 +27,12 @@ void    data_init(t_fractal *f)
     f->zoom = 1;
     f->mouse_pos_x = 0;
     f->mouse_pos_y = 0;
+    f->x = 0;
+    f->start_x = 0;
+    f->end_x = 0;
+    f->y = 0;
+    f->start_y = 0;
+    f->end_y = 0;
 }
 static void    events_init(t_fractal *f)
 {
