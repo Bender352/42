@@ -17,24 +17,26 @@ int main (void)
     char    *d;
     char    *j;
 
-    //c = malloc (25);
+    c = malloc (25);
     d = malloc (25);
     j = NULL;
 
-/*
+
     for (size_t i = 0; i < 5; i++)
     {
         c[i] = 'a';
     }
 
-    */
+  
     for (size_t i = 0; i < 5; i++)
     {
         d[i] = 'b';
     }
     printf ("%s\n", c);
-    printf ("%s\n", c);
-    j = add_to_rest(c, d);
+    printf ("%s\n", d);
+    j = add_to_rest(0, 0);
     printf ("%s\n", j);
     free (d);
+    free (c);
+    free (j);
 }

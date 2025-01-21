@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 08:27:37 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/21 08:37:33 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/21 12:11:31 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int len_str(char *str)
     int i;
 
     i = 0;
-    if (NULL == str)
+    if (!str || !*str)
         return (0);
     while (str[i])
         i++;

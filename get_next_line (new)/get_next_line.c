@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 08:27:31 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/21 11:35:02 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/01/21 12:07:42 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ char    *return_nl(char *rest)
     buf = malloc (len_str(rest) + 1);
     while (*rest)
     {
-        if (*rest);
+        if (*rest)
+        {
+            
+        }
     }
+    return (buf);
 }
 
 int check_for_nl (char *str)
@@ -29,11 +33,15 @@ int check_for_nl (char *str)
 
     i = 0;
     if (NULL == str)
+    {
         return (-1);
+    }
     while (str[i])
     {
-        if ( '\n' == str[i] || '\0' == str[i]);
+        if ( '\n' == str[i] || '\0' == str[i])
+        {
             return (1);
+        }
         i++;
     }
     return (0);
@@ -84,5 +92,5 @@ char *get_next_line(int fd)
     // TODO  if read gives less then BUFF_SIZE back
 
 
-    
+    return (buf);
 }
