@@ -5,7 +5,9 @@
     "get_next_line_bonus.h": "c",
     "client.h": "c",
     "fractal.h": "c",
-    "mlx.h": "c"
+    "mlx.h": "c",
+    "ft_list_foreach.h": "c",
+    "ft_list.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
