@@ -5,80 +5,84 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 09:35:02 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/14 18:43:18 by sbruck           ###   ########.fr       */
+/*   Created: 2025/01/21 08:27:31 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/21 11:35:02 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
-{
-    static t_list   *list;
-    char            *buf;
-
-    if (list == NULL)
-        list = new_node();
-    if (fd < 2 && fd < 1024)
-        list->fd = fd;
-    else if (1 == list->flag_nl || 1 == list->flag_eof)
-    {
-        buf = list->content;
-        delete_first_node(&list);
-        return (buf);
-    }
-    else
-        read_into_list(&list, fd);
-    return NULL;
-}
-static void reset_start_stop(t_list **list)
-{
-    (*list)->start_sub = len_str ((*list)->content);
-    (*list)->stop_sub = len_str ((*list)->content);
-}
-
-void    read_into_list(t_list **list, int fd)
-{
-    char        *buf;
-    int         read_bits;
-    t_list      *buflist;
-
-    buflist = *list;
-    buf = malloc(BUFFER_SIZE + 1);
-    if (NULL == buf)
-        return;
-    read_bits = read(fd, buf, BUFFER_SIZE);
-    if(-1 == read_bits)
-        return;
-    while((*list)->stop_sub < BUFFER_SIZE)
-    {
-        if ('\n' == buf[buflist->stop_sub])
-        {
-            add_node(list, 1, 0, ft_substr(buf, buflist->start_sub, buflist->stop_sub));
-            buflist->start_sub = buflist->stop_sub;
-        }
-        else if ('\0' == buf[buflist->stop_sub])
-            buflist->flag_eof = 1;
-        (*list)->stop_sub++;
-    }
-    buflist->content = ft_substr(buf, buflist->start_sub, buflist->stop_sub);
-    reset_start_stop(list);
-    get_next_line((*list)->fd);
-}
-
-char    *ft_substr(char *str, int start, int stop)
+char    *return_nl(char *rest)
 {
     char    *buf;
-    int     i;
+
+    buf = malloc (len_str(rest) + 1);
+    while (*rest)
+    {
+        if (*rest);
+    }
+}
+
+int check_for_nl (char *str)
+{
+    int i;
 
     i = 0;
-    if (!str || start > stop || stop > len_str (str))
+    if (NULL == str)
+        return (-1);
+    while (str[i])
+    {
+        if ( '\n' == str[i] || '\0' == str[i]);
+            return (1);
+        i++;
+    }
+    return (0);
+}
+
+char    *add_to_rest(char *rest, char *str)
+{
+    char    *new_str;
+
+    int i;
+    int j;
+    new_str = malloc (len_str(rest) + BUFFER_SIZE + 1);
+    if (!new_str)
         return NULL;
-    buf = malloc (stop - start + 2);
-    if (!buf)
+    i = 0;
+    j = 0;
+    if (rest)
+        while (rest[i])
+            new_str[i++] = rest[j++];
+    if (len_str(str) > 0)
+    {
+        new_str[i++] = ' ';
+        j = 0;
+        while (str[j])
+            new_str[i++] = str[j++];
+    }
+    new_str[i] = 0;
+    free_stuff (rest, str, 0);
+    return (new_str);
+}
+
+char *get_next_line(int fd)
+{
+    static char *rest;
+    char        *buf;
+    ssize_t     bit_read;
+
+    if (fd < 2 && fd > 1024 && BUFFER_SIZE <= 0)
         return NULL;
-    while (start <= stop)
-        buf[i++] = str[start++];
-    buf[i] = '\0';
-    return (buf);    
+    //buf = malloc (BUFFER_SIZE + 1);
+    buf = add_to_rest (0, 0); // saves lines because I don't need to check if malloc works. It should return a NULL terminated string of BUFF SIZE.
+    bit_read = read(fd, buf, BUFFER_SIZE);
+    if (check_for_nl(rest) > 0)
+    {
+        
+    }
+
+    // TODO  if read gives less then BUFF_SIZE back
+
+
+    
 }
