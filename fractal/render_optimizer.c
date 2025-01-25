@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   render_optimizer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 18:39:49 by sbruck            #+#    #+#             */
-/*   Updated: 2025/01/25 17:33:07 by sbruck           ###   ########.fr       */
+/*   Created: 2025/01/25 18:01:53 by sbruck            #+#    #+#             */
+/*   Updated: 2025/01/25 18:02:06 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 
-int	set_color(int t, int r, int g, int b)
+void	calculate_boundaries(t_fractal *f)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
-}
+	double	complex_range_x;
+	double	complex_range_y;
 
-int	get_t(int trgb)
-{
-	return ((trgb >> 24) & 0xFF);
-}
-
-int	get_r(int trgb)
-{
-	return ((trgb >> 16) & 0xFF);
-}
-
-int	get_g(int trgb)
-{
-	return ((trgb >> 8) & 0xFF);
-}
-
-int	get_b(int trgb)
-{
-	return (trgb & 0xFF);
+	complex_range_x = 4.0 / f->zoom;
+	complex_range_y = 4.0 / f->zoom;
+	f->start_x = f->shift_x - (complex_range_x / 2.0);
+	f->end_x = f->shift_x + (complex_range_x / 2.0);
+	f->start_y = f->shift_y - (complex_range_y / 2.0);
+	f->end_y = f->shift_y + (complex_range_y / 2.0);
 }

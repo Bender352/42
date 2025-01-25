@@ -8,6 +8,7 @@ LIBFT = -Llib/libft -lft
 #SRC = test_window.c
 SRC = 	render.c \
 		init.c \
+		render_optimizer.c \
 		math_utils.c \
 		events.c \
 		test_window.c
