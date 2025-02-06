@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 14:28:27 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 17:39:54 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:32:37 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void check_format(char **str)
 }
 
 //check for doubl number and give a error.
-int check_double(t_stack **stack)
+int check_input_error(t_stack **stack)
 {
     long long int   i;
     t_stack         *temp;
@@ -28,13 +28,16 @@ int check_double(t_stack **stack)
 
     temp = *stack;
     temp2 = *stack;
-    while (temp->next)
+    while (temp)
     {
         i = temp->i;
-        while (temp2->prev)
+        while (temp2)
         {
-            
+            if (temp2->i == i)
+                show_error("Error: Double detected!");
+            temp2 = temp2->next;
         }
+        temp = temp->next;
     }
     return(0);
 }
@@ -43,8 +46,10 @@ int isnumber(int i)
 {
     if(i >= 0);
 }
-//normalise numbers of the nodes to the max size of the nodes in the list.
-int normalise_numbers()
+void    show_error(char *msg, t_stack **a, t_stack **b, char *str)
 {
-
+    free_stack (a, b);
+    free_array (str);
+    perror(msg);
+    exit(1);
 }

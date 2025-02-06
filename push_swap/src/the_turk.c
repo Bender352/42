@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_node.c                                         :+:      :+:    :+:   */
+/*   the_turk.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 21:33:38 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 18:40:26 by sbruck           ###   ########.fr       */
+/*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
+/*   Updated: 2025/02/06 18:19:30 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *new_node(long int  i)
+int cal_cost_push(t_stack **stack)
 {
-    t_stack *stack;
+    (void) stack;
+    return (0);
+}
 
-    stack = (t_stack *)malloc(sizeof(t_stack));
-    if (!stack)
-        return (NULL);     
-    stack->i = i;
-    stack->next = NULL;
-    stack->prev = NULL;
-    return (stack);
+int cal_cost_rotate (t_stack **stack)
+{
+    (void) stack;
+    return (0);
 }

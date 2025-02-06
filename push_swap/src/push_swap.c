@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 10:52:11 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:39:14 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,19 @@ int main(int arg, char **argv)
 {
     static t_stack  *stack_a;
     static t_stack  *stack_b;
+    static t_mothership *mother;
     int total_nodes;
-    //int flag_err;
 
     char    **temp;
-    //flag_err = 0;
+    mother->stack_a = &stack_a;
+    mother->stack_b = &stack_b;
+    mother->temp = temp;
     arg = 2;
     if (arg != 2 && argv[1][0])
         return (0);
     else
         temp = ft_split(argv[1], ' ');
-    total_nodes = fill_stack(&stack_a, temp);
-    printf("Total nodes :    %d\n", total_nodes);
+    total_nodes = fill_stack(&stack_a, temp, stack_b);
     print_stack(&stack_a);
     sort_method(&stack_a, &stack_b, total_nodes);
     print_stack(&stack_a);
@@ -52,9 +53,13 @@ void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes)
     else if (total_nodes <= 3)
         sort3(stack_a);
     else if (total_nodes <= 5)
-        bubble_sort(stack_a, stack_b);
-    else if (total_nodes <= 15)
         return;
+    else if (total_nodes <= 15)
+    {
+        printf("%s", "TEST2\n");
+        bubble_sort(stack_a, stack_b);
+
+    }
     else if (total_nodes <= 100)
         return;
     else if (total_nodes <= 500)
@@ -66,10 +71,9 @@ void print_stack(t_stack **stack)
     t_stack *buf;
 
     buf = *stack;
-    printf("%s\n", "Print out stack:");
     while (buf)
     {
-        printf("%d\n", buf->i);
+        printf("%ld\n", buf->i);
         buf = buf->next;
     }
 }

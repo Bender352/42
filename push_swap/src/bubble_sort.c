@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:29:44 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 11:08:13 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 15:25:03 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 void    highest_on_top(t_stack  **stack)
 {
-    if (count_nodes(stack) < 2)
+    t_stack     *list;
+
+    list = *stack;
+    if (count_nodes(&list) <= 1)
         return;
-    if ((*stack)->i < (*stack)->next->i)
-        s(stack);
+    if (list->i < list->next->i)
+    {
+        s(&list);
+        printf("%s\n", "SWAPED");
+    }
     return;
 }
 
@@ -42,8 +48,15 @@ void    bubble_sort(t_stack **stack_a, t_stack **stack_b)
     }
     else
     {
-        p(stack_a, stack_b);
-        highest_on_top(stack_b);
+        while (count_nodes(stack_a) >= 2)
+        {
+            p(stack_a, stack_b);
+            highest_on_top(stack_b);
+            printf("\n%s\n", "Print stack a :");
+            print_stack(stack_a);
+            printf("%s\n", "Print stack b :");
+            print_stack(stack_b);
+        }
     }
     //stack_b highest on top sorting
 

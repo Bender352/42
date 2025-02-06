@@ -3,6 +3,7 @@ FLAGS = -Wall -Werror -Wextra
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
 SRC_FILES = fill_stack \
+			the_turk \
             ft_split \
             new_node \
             push_swap \
