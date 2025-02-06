@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 19:51:56 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:53:50 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,22 @@ int main(int arg, char **argv)
     static t_stack  *stack_a;
     static t_stack  *stack_b;
     int total_nodes;
-    int *flag_err;
+    //int flag_err;
 
     char    **temp;
-    *flag_err = 0;
+    //flag_err = 0;
     arg = 2;
     if (arg != 2 && argv[1][0])
         return (0);
     else
         temp = ft_split(argv[1], ' ');
     total_nodes = fill_stack(&stack_a, temp);
-    printf("Total nodes :    %d", total_nodes);
-    r(&stack_a);
+    printf("Total nodes :    %d\n", total_nodes);
+    print_stack(&stack_a);
+    //s(&stack_a);
+    sort_method(&stack_a, &stack_b, total_nodes);
+    print_stack(&stack_a);
+
     free_stack(&stack_a, &stack_b);
     free_array(temp);
     temp = NULL;
@@ -44,6 +48,7 @@ int main(int arg, char **argv)
 
 void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes)
 {
+    (void) stack_b;
     if(total_nodes < 2)
         return;
     else if (total_nodes <= 3)
@@ -57,7 +62,22 @@ void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes)
     else if (total_nodes <= 500)
         return;
 }
+
+void print_stack(t_stack **stack)
+{
+    t_stack *buf;
+
+    buf = *stack;
+    printf("%s\n", "Print out stack:");
+    while (buf)
+    {
+        printf("%d\n", buf->i);
+        buf = buf->next;
+    }
+}
+
 void    print_move(char *str)
 {
-    if (str = pa)
+    (void) str;
+   // if (*str == "pa")
 }

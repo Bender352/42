@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 19:51:58 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:46:41 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ typedef struct s_stack
 
 # endif
 
-
-int     main(int arg, char **argv);
+void    print_stack(t_stack **stack);
 
 t_stack *new_node(int  i);
 char	**ft_split(char const *s, char c);
@@ -62,5 +61,6 @@ void    sort3(t_stack   **head);
 void    if_2(t_stack **head);
 void    if_3(t_stack **head);
 
+int     main(int arg, char **argv);
 
 # endif

@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:53:30 by sbruck            #+#    #+#             */
-/*   Updated: 2024/12/24 13:07:39 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/04 17:54:02 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void    sort3(t_stack   **head)
     else
         if_3(head);
 }
+
 void    if_2(t_stack **head)
 {
     if((*head)->next->i == 1) // 2 ,1 ,3
@@ -41,8 +42,10 @@ void    if_2(t_stack **head)
             print_move("ra");
         }
 }
+
 void    if_3(t_stack **head)
-{if((*head)->next->i == 1)   // 3, 1, 2
+{
+    if((*head)->next->i == 1)   // 3, 1, 2
         {
             r(head);
             s(head);

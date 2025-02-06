@@ -7,17 +7,18 @@ SRC_FILES = fill_stack \
             new_node \
             push_swap \
 			stack_handling \
+			sort3 \
 			free_stuff
 
 SRC_NAME = $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
 OBJ_NAME = $(addprefix $(OBJ_PATH), $(addsuffix .o, $(SRC_FILES)))
-OUTPUT = prog.out
+OUTPUT = push_swap
 NAME = library.a
 
-all: $(NAME)
+all: $(OUTPUT)
 
 $(NAME): $(OBJ_NAME)
-	ar rcs $@ $^
+	ar rcs $@ -o $^
 
 $(OUTPUT): $(OBJ_NAME)
 	$(CC) $(FLAGS) -g -o $@ $^
