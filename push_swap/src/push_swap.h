@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/04 17:46:41 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 08:12:43 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_stack
 void    print_stack(t_stack **stack);
 
 t_stack *new_node(int  i);
+int     find_smallest (t_stack **list)
 char	**ft_split(char const *s, char c);
 size_t  ft_strlen(char *str);
 int     fill_stack(t_stack **header, char **str);
