@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:44:31 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 10:45:31 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 11:03:28 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int find_smallest (t_stack **list)
         return (-1);
     stack = *list;
     i = stack->i;
-    while (*stack)
+    while (stack)
     {
         if (i < stack->i)
         {
@@ -37,5 +37,22 @@ int find_smallest (t_stack **list)
         stack = stack->next;
     }
     return (index);
+}
+
+int count_nodes(t_stack **stack)
+{
+    int i;
+
+    i = 0;
+    t_stack *list;
+    if (!stack && !(*stack))
+        return (-1);
+    list = *stack;
+    while ((list))
+    {
+        i++;
+        list = list->next;
+    }
+    return (i);
 }
 

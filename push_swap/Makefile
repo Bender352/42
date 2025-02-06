@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 FLAGS = -Wall -Werror -Wextra
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/

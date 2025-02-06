@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 10:40:48 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 10:52:11 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int main(int arg, char **argv)
     total_nodes = fill_stack(&stack_a, temp);
     printf("Total nodes :    %d\n", total_nodes);
     print_stack(&stack_a);
-    //s(&stack_a);
     sort_method(&stack_a, &stack_b, total_nodes);
     print_stack(&stack_a);
 
