@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:44:31 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 09:36:33 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 10:45:31 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int find_smallest (t_stack **list)
 {
-    int i;
-    int index;
-    int track;
+    int         i;
+    int         index;
+    int         track;
     t_stack     *stack;
 
     i = 0;

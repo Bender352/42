@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 08:53:09 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 10:40:48 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int main(int arg, char **argv)
 
 void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes)
 {
-    (void) stack_b;
     if(total_nodes < 2)
         return;
     else if (total_nodes <= 3)
