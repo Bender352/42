@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/04 17:53:50 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 08:53:09 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes)
     else if (total_nodes <= 3)
         sort3(stack_a);
     else if (total_nodes <= 5)
-        return;
+        bubble_sort(stack_a, stack_b);
     else if (total_nodes <= 15)
         return;
     else if (total_nodes <= 100)

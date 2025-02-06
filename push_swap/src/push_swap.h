@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 08:12:43 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/06 08:51:41 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void    free_stack(t_stack  **stack_a, t_stack **stack_b);
 void    free_array(char **pntstr);
 int     element_count (char **str);
 int	    ft_atoi(const char *str);
+
+void    push_all_to_a(t_stack **stack_a, t_stack **stack_b);
+void    highest_on_top(t_stack  **stack);
+void    bubble_sort(t_stack **stack_a, t_stack **stack_b);
 
 t_stack *last_node(t_stack  *list);
 

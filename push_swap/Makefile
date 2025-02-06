@@ -9,6 +9,7 @@ SRC_FILES = fill_stack \
 			stack_handling \
 			sort3 \
 			move_nodes \
+			bubble_sort \
 			free_stuff
 
 SRC_NAME = $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
