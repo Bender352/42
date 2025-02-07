@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:17 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/07 18:09:47 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/07 21:52:57 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int fill_stack(t_mothership *m)
     while (i < element_count(m->temp))
     {
 		l = ft_atol(m->temp[i]);
-		printf("print long from atol %ld\n", l);
 		if (l < INT_MIN || l > INT_MAX)
 		{
 			m->error_msg = "A number is out of range of INT!";
