@@ -2,7 +2,9 @@ CC = cc
 FLAGS = -Wall -Werror -Wextra
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
-SRC_FILES = fill_stack \
+SRC_FILES = error_handling \
+			print_move \
+			fill_stack \
 			the_turk \
             ft_split \
             new_node \
@@ -19,9 +21,6 @@ OUTPUT = push_swap
 NAME = library.a
 
 all: $(OUTPUT)
-
-$(NAME): $(OBJ_NAME)
-	ar rcs $@ -o $^
 
 $(OUTPUT): $(OBJ_NAME)
 	$(CC) $(FLAGS) -g -o $@ $^
@@ -43,4 +42,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re run
+rec: fclean all
+	clear
+
+.PHONY: all clean fclean re run clear

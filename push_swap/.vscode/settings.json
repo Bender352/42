@@ -57,5 +57,8 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "42header.email": "sbruck@student.42.fr",
-  "42header.username": "sbruck"
+  "42header.username": "sbruck",
+  "files.associations": {
+    "push_swap.h": "c"
+  }
 }

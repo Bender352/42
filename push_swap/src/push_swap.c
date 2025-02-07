@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 19:39:14 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/07 17:12:22 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,28 @@ int main(int arg, char **argv)
 {
     static t_stack  *stack_a;
     static t_stack  *stack_b;
-    static t_mothership *mother;
+    static t_mothership m;
     int total_nodes;
 
-    char    **temp;
-    mother->stack_a = &stack_a;
-    mother->stack_b = &stack_b;
-    mother->temp = temp;
+    m.stack_a = &stack_a;
+    m.stack_b = &stack_b;
     arg = 2;
     if (arg != 2 && argv[1][0])
         return (0);
     else
-        temp = ft_split(argv[1], ' ');
-    total_nodes = fill_stack(&stack_a, temp, stack_b);
+        m.temp = ft_split(argv[1], ' ');
+    total_nodes = fill_stack(&m);
     print_stack(&stack_a);
     sort_method(&stack_a, &stack_b, total_nodes);
+    printf("--------------------\n");
     print_stack(&stack_a);
+    printf("--------------------\n");
+    print_stack(&stack_a);
+    printf("--------------------\n");
 
     free_stack(&stack_a, &stack_b);
-    free_array(temp);
-    temp = NULL;
+    free_array(m.temp);
+    m.temp = NULL;
     return (0);
 }
 
@@ -78,8 +80,3 @@ void print_stack(t_stack **stack)
     }
 }
 
-void    print_move(char *str)
-{
-    (void) str;
-   // if (*str == "pa")
-}

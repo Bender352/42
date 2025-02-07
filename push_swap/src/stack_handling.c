@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:07:54 by sven              #+#    #+#             */
-/*   Updated: 2025/02/06 11:08:37 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/07 18:03:58 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,20 @@ void    p(t_stack **stack_from, t_stack **stack_to)
     } 
 }
 
-void    s(t_stack **stack)
+void s(t_stack **stack)
 {
     t_stack *first;
     t_stack *second;
 
-    if(stack == NULL || (*stack) == NULL)
+    if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
         return;
-    first = (*stack);
-    second = (*stack)->next;
+    first = *stack;
+    second = first->next;
     first->next = second->next;
     if (second->next)
         second->next->prev = first;
-    second->prev = NULL;
     second->next = first;
+    second->prev = NULL;
     first->prev = second;
     (*stack) = second;
 }

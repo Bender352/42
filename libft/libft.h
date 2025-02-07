@@ -28,7 +28,7 @@ typedef struct s_stack
 }					t_list;
 
 int					ft_atoi(const char *str);
-double              ft_atodl(const char *str);
+double				ft_atodl(const char *str);
 void				ft_bzero(void *b, size_t len);
 void				*ft_calloc(size_t number_of_elements, size_t el_size);
 int					ft_isalnum(int i);
@@ -65,6 +65,7 @@ int					ft_strlcat(char *dest, const char *src, size_t size);
 unsigned int		ft_strlcpy(char *dest, const char *src, unsigned int size);
 size_t				ft_strlen(const char *s);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 char				*ft_strrchr(const char *str, int c);
