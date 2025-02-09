@@ -80,7 +80,9 @@ void    if_2(t_stack **head);
 void    if_3(t_stack **head);
 
 void    set_index (t_stack **stack);
+void    ini_stack (t_mothership *m);
 bool    is_stack_sorted(t_stack **stack);
+void    sort_stack (t_mothership *m);
 
 int     main(int arg, char **argv);
 

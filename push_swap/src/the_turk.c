@@ -30,7 +30,7 @@ t_stack *find_low_coast (t_stack **stack)
     return NULL;
 }
 
-void ini_stack (t_mothership m)
+void ini_stack (t_mothership *m)
 {
     set_index(m->stack_a);
     set_index(m->stack_b);
@@ -62,12 +62,29 @@ void set_index (t_stack **stack)
     }
 }
 
-void sort_stack (t_mothership m)
+void sort_stack (t_mothership *m)
 {
     int len;
+    int i;
 
     len = count_nodes(m->stack_a);
-    if (len > 3)
+    i = 0;
+    while (i < 2)
+    {   
+        if (len-- > 3 && is_stack_sorted(m->stack_a))
+        {
+            p (m->stack_a, m->stack_b);
+            print_move("pa");
+        }
+        i++;
+    }
+    while (len-- > 3 && is_stack_sorted(m->stack_a))
+    {
+        ini_stack(m);
+        shove_b_to_a;
+    }
+    sort3(m->stack_a);
+
 
 
 }

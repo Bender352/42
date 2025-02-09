@@ -3,6 +3,7 @@ FLAGS = -Wall -Werror -Wextra
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
 SRC_FILES = error_handling \
+			is_sorted \
 			print_move \
 			fill_stack \
 			the_turk \
