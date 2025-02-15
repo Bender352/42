@@ -12,6 +12,7 @@ SRC_FILES = error_handling \
             push_swap \
 			stack_handling \
 			sort3 \
+			sort2 \
 			move_nodes \
 			bubble_sort \
 			free_stuff

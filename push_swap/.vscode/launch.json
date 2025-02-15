@@ -6,9 +6,9 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/push_swap",
-      "args": ["52 64 1"],
+      "args": ["1 35"],
       "stopAtEntry": false,
-      "cwd": "${fileDirname}",
+      "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",
@@ -29,10 +29,10 @@
       "name": "C/C++: gcc build and debug active file",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}",
-      "args": [],
+      "program": "${workspaceFolder}/push_swap",
+      "args": ["35 1 5 98"],
       "stopAtEntry": false,
-      "cwd": "${fileDirname}",
+      "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",
@@ -48,7 +48,7 @@
           "ignoreFailures": true
         }
       ],
-      "preLaunchTask": "C/C++: gcc build active file",
+      "preLaunchTask": "make re",
       "miDebuggerPath": "/usr/bin/gdb"
     },
     {
@@ -58,7 +58,7 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/sven/42/push_swap/src",
+      "cwd": "/home/sven/42/push_swap",
       "program": "/home/sven/42/push_swap/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",

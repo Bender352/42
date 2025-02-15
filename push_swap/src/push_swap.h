@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/09 00:53:35 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/15 20:44:45 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void    rr(t_stack **stack);
 void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes);
 
 void    sort3(t_stack   **head);
+void    sort2(t_stack **stack_a);
 void    if_2(t_stack **head);
 void    if_3(t_stack **head);
 
@@ -83,6 +84,11 @@ void    set_index (t_stack **stack);
 void    ini_stack (t_mothership *m);
 bool    is_stack_sorted(t_stack **stack);
 void    sort_stack (t_mothership *m);
+void    set_target(t_mothership *m);
+void    set_cost(t_mothership *m);
+void    cheapest_node(t_stack **stack);
+void    shove_b_to_a(t_mothership *m);
+t_stack *find_highest_i_node(t_stack **stack);
 
 int     main(int arg, char **argv);
 

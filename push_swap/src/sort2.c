@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   sort2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 00:48:01 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/15 19:58:02 by sbruck           ###   ########.fr       */
+/*   Created: 2025/02/15 20:00:28 by sbruck            #+#    #+#             */
+/*   Updated: 2025/02/15 20:02:12 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool    is_stack_sorted(t_stack **stack)
+void    sort2(t_stack **stack_a)
 {
-    t_stack *list;
-
-    if(!stack && !(*stack))
-        return (1);
-    list = (*stack);
-    while (list)
-    {
-        if (list->next && list->i < list->next->i)
-            list = list->next;
-        else if (!list->next)
-            break;
-        else
-            return (false);
-    }
-    return (true);
+    if (!(is_stack_sorted(stack_a)))
+        {
+            s(stack_a);
+            print_move("sa");
+        }
 }
