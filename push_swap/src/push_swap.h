@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/15 20:44:45 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/15 23:55:10 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,11 @@ t_stack *last_node(t_stack  *list);
 
 void    s(t_stack **stack);
 void    p(t_stack **stack_from, t_stack **stack_to);
-void    r(t_stack **stack);
-void    rr(t_stack **stack);
+void    rotate_stack(t_stack **stack);
+void    rev_rotate_stack(t_stack **stack);
 
-void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes);
+void    do_the_turk(t_mothership *m);
+void    sort_method(t_mothership *m, int total_nodes);
 
 void    sort3(t_stack   **head);
 void    sort2(t_stack **stack_a);
@@ -81,14 +82,24 @@ void    if_2(t_stack **head);
 void    if_3(t_stack **head);
 
 void    set_index (t_stack **stack);
-void    ini_stack (t_mothership *m);
+void    ini_stack_a(t_mothership *m);
+void    ini_stack_b(t_mothership *m);
 bool    is_stack_sorted(t_stack **stack);
-void    sort_stack (t_mothership *m);
-void    set_target(t_mothership *m);
+void    sort_stack(t_mothership *m);
+void    set_target_a(t_mothership *m);
+void    set_target_b(t_mothership *m);
 void    set_cost(t_mothership *m);
 void    cheapest_node(t_stack **stack);
 void    shove_b_to_a(t_mothership *m);
+void    shove_a_to_b(t_mothership *m);
 t_stack *find_highest_i_node(t_stack **stack);
+t_stack *find_smallest_i_node(t_stack **stack);
+t_stack *get_cheapest_node(t_stack **a);
+void    rr_all(t_mothership *m, t_stack *cheapy);
+void    rrr_all(t_mothership *m, t_stack *cheapy);
+void    push_to_top_a(t_mothership *m, t_stack *top);
+void    push_to_top_b(t_mothership *m, t_stack *top);
+void    min_on_top(t_mothership *m);
 
 int     main(int arg, char **argv);
 

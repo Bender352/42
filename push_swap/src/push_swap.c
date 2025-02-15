@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/15 20:12:09 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/15 23:54:29 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int arg, char **argv)
     printf("Unsorted input stack\n");
     print_stack(&stack_a);
     printf("--------------------\n");
-    sort_method(&stack_a, &stack_b, total_nodes);
+    sort_method(&m, total_nodes);
     printf("--------------------\n");
     printf("Sorted Stack Output\n");
     print_stack(&stack_a);
@@ -53,19 +53,15 @@ int main(int arg, char **argv)
     return (0);
 }
 
-void    sort_method(t_stack **stack_a, t_stack **stack_b, int total_nodes)
+void    sort_method(t_mothership *m, int total_nodes)
 {
     printf("TOTAL NODES : %d\n", total_nodes);
     if(total_nodes <= 2)
-        sort2(stack_a);
+        sort2(m->stack_a);
     else if (total_nodes <= 3)
-        sort3(stack_a);
-    else if (total_nodes <= 5)
-        return;
+        sort3(m->stack_a);
     else
-    {
-
-    }
+        do_the_turk(m);
     /*
     else if (total_nodes <= 15)
     {

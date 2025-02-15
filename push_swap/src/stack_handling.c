@@ -6,13 +6,13 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:07:54 by sven              #+#    #+#             */
-/*   Updated: 2025/02/07 18:03:58 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/15 22:35:28 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    r(t_stack **stack)
+void    rotate_stack(t_stack **stack)
 {
     t_stack *first;
     t_stack *last;
@@ -28,7 +28,7 @@ void    r(t_stack **stack)
     (*stack)->prev = NULL;
 }
 
-void    rr(t_stack **stack)
+void    rev_rotate_stack(t_stack **stack)
 {
     t_stack *first;
     t_stack *last;
