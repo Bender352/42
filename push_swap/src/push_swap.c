@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/07 17:12:22 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/07 21:56:55 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 In case of error, it must display "Error" followed by a ’\n’ on the standard error.
 Errors include for example: some arguments aren’t integers, some arguments are
 bigger than an integer and/or there are duplicates.
+*/
+
+/*
+when ./push_swap 3 45 6   -> I get a output. Check if this is correct if not handle it correctyl
 */
 
 int main(int arg, char **argv)
@@ -35,9 +39,8 @@ int main(int arg, char **argv)
         m.temp = ft_split(argv[1], ' ');
     total_nodes = fill_stack(&m);
     print_stack(&stack_a);
-    sort_method(&stack_a, &stack_b, total_nodes);
     printf("--------------------\n");
-    print_stack(&stack_a);
+    sort_method(&stack_a, &stack_b, total_nodes);
     printf("--------------------\n");
     print_stack(&stack_a);
     printf("--------------------\n");

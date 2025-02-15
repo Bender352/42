@@ -82,7 +82,7 @@ void    p(t_stack **stack_from, t_stack **stack_to)
         b->prev = a;
         a->next = b;
         *stack_to = a;
-    } 
+    }
 }
 
 void s(t_stack **stack)

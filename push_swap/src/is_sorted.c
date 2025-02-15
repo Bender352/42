@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort3.c                                            :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 13:53:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/07 22:22:21 by sbruck           ###   ########.fr       */
+/*   Created: 2025/02/09 00:48:01 by sbruck            #+#    #+#             */
+/*   Updated: 2025/02/09 00:54:39 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    sort3(t_stack   **head)
+bool    is_stack_sorted(t_stack **stack)
 {
-    int     i;
+    t_stack *list;
 
-    i = find_highest(head);
-    if (0 == i)
+    if(!stack && !(*stack))
+        return (1);
+    list = (*stack);
+    while (list)
     {
-        r(head);
-        print_move("ra");
+        if (list->next && list->i < list->next->i)
+            list = list->next;
+        else
+            return (false);
     }
-    else if (1 == i)
-    {
-        s(head);
-        r(head);
-        print_move("sa");
-        print_move("ra");
-    }
-    i = find_smallest(head);
-    if (1 == i)
-    {
-        s(head);
-        print_move("sa");
-    }
+    return (true);
 }
