@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/15 23:56:08 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/17 01:15:51 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,6 @@ void    set_cost(t_mothership *m)
 void    cheapest_node(t_stack **stack)
 {
     long    lowest_value;
-    t_stack *cheapest;
     t_stack *a;
 
     a = *(stack);
@@ -180,7 +179,6 @@ void    cheapest_node(t_stack **stack)
         if (a->cost_push < lowest_value)
         {
             lowest_value = a->cost_push;
-            cheapest = a;
         }
         a = a->next;
     }
