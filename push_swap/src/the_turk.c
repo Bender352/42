@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/17 01:15:51 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:10:15 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void    sort_stack(t_mothership *m)
     i = 0;
     while (i < 2)
     {   
-        if (len-- > 3 && is_stack_sorted(m->stack_a))
+        if (len-- > 3 && !(is_stack_sorted(m->stack_a)))
         {
             p (m->stack_a, m->stack_b);
             print_move("pa");
         }
         i++;
     }
-    while (len-- > 3 && is_stack_sorted(m->stack_a))
+    while (len-- > 3 && !(is_stack_sorted(m->stack_a)))
     {
         ini_stack_a(m);
-        shove_b_to_a(m);
+        shove_a_to_b(m);
         i++;
     }
     sort3(m->stack_a);
@@ -171,6 +171,7 @@ void    cheapest_node(t_stack **stack)
 {
     long    lowest_value;
     t_stack *a;
+    t_stack *lowest_node;
 
     a = *(stack);
     lowest_value = LONG_MAX;
@@ -179,10 +180,11 @@ void    cheapest_node(t_stack **stack)
         if (a->cost_push < lowest_value)
         {
             lowest_value = a->cost_push;
+            lowest_node = a;  
         }
         a = a->next;
     }
-    a->cheapst = true;    
+    lowest_node->cheapst = true;    
 }
 
 void    shove_b_to_a(t_mothership *m)
