@@ -23,28 +23,17 @@ void    sort_stack(t_mothership *m)
     int i;
 
     len = count_nodes(m->stack_a);
-    i = 0;
-    while (i < 2)
-    {   
-        if (len-- > 3 && !(is_stack_sorted(m->stack_a)))
-        {
-            p (m->stack_a, m->stack_b);
-            print_move("pa");
-        }
-        i++;
-    }
-    while (len-- > 3 && !(is_stack_sorted(m->stack_a)))
+    while (len > 3)
     {
-        ini_stack_a(m);
-        shove_a_to_b(m);
-        i++;
+        p(m->stack_a, m->stack_b);
+        print_move("pb");
+        len = count_nodes(m->stack_a); 
     }
     sort3(m->stack_a);
     while (*(m->stack_b))
     {
         ini_stack_b(m);
         shove_b_to_a(m);
-        i++;
     }
     set_index(m->stack_a);
     min_on_top(m);
@@ -252,8 +241,8 @@ t_stack *get_cheapest_node(t_stack **a)
 {
     t_stack *node;
 
-    node = *(a);
-    while (a)
+    node = *a;
+    while (node)
     {
         if (node->cheapst)
             return (node);
@@ -296,38 +285,32 @@ void    rrr_all(t_mothership *m, t_stack *cheapy)
 
 void    push_to_top_a(t_mothership *m, t_stack *top)
 {
-    t_stack *a;
-
-    a = *(m->stack_a);
-    while(top != a)
+    while (target != *(m->stack_a))
     {
-        if(top->above_median)
+        if (target->above_median)
         {
-            rotate_stack(&a);
+            rotate_stack(m->stack_a);
             print_move("ra");
         }
         else
         {
-            rev_rotate_stack(&a);
+            rev_rotate_stack(m->stack_a);
             print_move("rra");
         }
     }
 }
 void    push_to_top_b(t_mothership *m, t_stack *top)
 {
-    t_stack *b;
-
-    b = *(m->stack_b);
-    while(top->target != b)
+    while (cheapy->target != *(m->stack_b))
     {
-        if(top->target->above_median)
+        if (cheapy->target->above_median)
         {
-            rotate_stack(&b);
+            rotate_stack(m->stack_b);
             print_move("rb");
         }
         else
         {
-            rev_rotate_stack(&b);
+            rev_rotate_stack(m->stack_b);
             print_move("rrb");
         }
     }
