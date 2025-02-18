@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/17 17:10:15 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/18 23:44:01 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void    do_the_turk(t_mothership *m)
 void    sort_stack(t_mothership *m)
 {
     int len;
-    int i;
 
     len = count_nodes(m->stack_a);
     while (len > 3)
@@ -285,9 +284,9 @@ void    rrr_all(t_mothership *m, t_stack *cheapy)
 
 void    push_to_top_a(t_mothership *m, t_stack *top)
 {
-    while (target != *(m->stack_a))
+    while (top != *(m->stack_a))
     {
-        if (target->above_median)
+        if (top->above_median)
         {
             rotate_stack(m->stack_a);
             print_move("ra");
@@ -301,9 +300,9 @@ void    push_to_top_a(t_mothership *m, t_stack *top)
 }
 void    push_to_top_b(t_mothership *m, t_stack *top)
 {
-    while (cheapy->target != *(m->stack_b))
+    while (top!= *(m->stack_b))
     {
-        if (cheapy->target->above_median)
+        if (top->target->above_median)
         {
             rotate_stack(m->stack_b);
             print_move("rb");
