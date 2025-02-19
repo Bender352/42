@@ -6,15 +6,20 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/19 15:42:59 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/19 19:49:48 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
+/***************************************** */
+//34:45 start from here to review the code!
+/***************************************** */
+
+
 void    do_the_turk(t_mothership *m)
 {
-    
     sort_stack(m);
 }
 
@@ -23,11 +28,20 @@ void    sort_stack(t_mothership *m)
     int len;
 
     len = count_nodes(m->stack_a);
-    while (len > 3)
+    if (len-- > 3 && !is_stack_sorted(m->stack_a))
     {
         p(m->stack_a, m->stack_b);
         print_move("pb");
-        len = count_nodes(m->stack_a); 
+    }
+    if (len-- > 3 && !is_stack_sorted(m->stack_a))
+    {
+        p(m->stack_a, m->stack_b);
+        print_move("pb");
+    }
+    while (len-- > 3 && !is_stack_sorted(m->stack_a))
+    {
+        ini_stack_a(m);
+        shove_a_to_b(m);
     }
     sort3(m->stack_a);
     while (*(m->stack_b))
