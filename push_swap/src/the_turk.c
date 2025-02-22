@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/22 20:03:15 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 20:23:37 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,6 @@ void shove_a_to_b(t_mothership *m)
     }
 }
 
-
 int cal_cost_push(t_stack **stack)
 {
     (void) stack;
@@ -277,67 +276,7 @@ t_stack *get_cheapest_node(t_stack **a)
     }
     return NULL;
 }
-void    rr_all(t_mothership *m, t_stack *cheapy)
-{
-    while (*(m->stack_a) != cheapy && *(m->stack_b) != cheapy->target)
-    {
-        rotate_stack(m->stack_a);
-        rotate_stack(m->stack_b);
-        print_move("rr");
-        set_index(m->stack_a);
-        set_index(m->stack_b);
-    }
-}
-void    rrr_all(t_mothership *m, t_stack *cheapy)
-{
-    while (*(m->stack_a) != cheapy && *(m->stack_b) != cheapy->target)
-    {
-        rev_rotate_stack(m->stack_a);
-        rev_rotate_stack(m->stack_b);
-        print_move("rrr");
-        set_index(m->stack_a);
-        set_index(m->stack_b);
 
-    }
-}
-
-void    push_to_top_a(t_mothership *m, t_stack *top)
-{
-    t_stack **stack;
-    stack = m->stack_a;
-    int len = count_nodes(stack);
-    int up_moves = top->index;
-    int down_moves = len - top->index;
-
-    if (up_moves < down_moves)
-    {
-        while (*stack != top)
-            rotate_stack(stack);  // ra
-    }
-    else
-    {
-        while (*stack != top)
-            rev_rotate_stack(stack);  // rra
-    }
-}
-
-
-void    push_to_top_b(t_mothership *m, t_stack *top)
-{
-    while (top!= *(m->stack_b))
-    {
-        if (top->target->above_median)
-        {
-            rotate_stack(m->stack_b);
-            print_move("rb");
-        }
-        else
-        {
-            rev_rotate_stack(m->stack_b);
-            print_move("rrb");
-        }
-    }
-}
 void    min_on_top(t_mothership *m)
 {
     t_stack **a;

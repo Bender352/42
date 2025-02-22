@@ -15,6 +15,8 @@ SRC_FILES = error_handling \
 			sort2 \
 			move_nodes \
 			bubble_sort \
+			the_turk_rotate_stacks \
+			the_turk_push_to_top \
 			free_stuff
 
 SRC_NAME = $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC_FILES)))
