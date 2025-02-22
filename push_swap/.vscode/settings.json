@@ -59,6 +59,7 @@
   "42header.email": "sbruck@student.42.fr",
   "42header.username": "sbruck",
   "files.associations": {
-    "push_swap.h": "c"
+    "push_swap.h": "c",
+    "random": "c"
   }
 }

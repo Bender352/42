@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/19 15:01:05 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 18:07:54 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    ini_stack_a(t_mothership *m)
     set_index(m->stack_b);
     set_target_a(m);
     set_cost(m);
-    cheapest_node(m->stack_a);
+    set_cheapest_node(m->stack_a);
 }
 
 void    ini_stack_b(t_mothership *m)
@@ -155,7 +155,7 @@ void    set_cost(t_mothership *m)
     }    
 }
 
-void    cheapest_node(t_stack **stack)
+void    set_cheapest_node(t_stack **stack)
 {
     long    lowest_value;
     t_stack *a;

@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:46:48 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/22 16:33:50 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 17:09:26 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void    print_move(char *str)
     else if (!ft_strcmp(str, "ss"))
         write(1, "ss", 2);
     else if (!ft_strcmp(str, "rra"))
-        write(1, "rra", 2);
+        write(1, "rra", 3);
     else if (!ft_strcmp(str, "rrb"))
-        write(1, "rrb", 2);
+        write(1, "rrb", 3);
     else if (!ft_strcmp(str, "rrr"))
-        write(1, "rrr", 2);
+        write(1, "rrr", 3);
     else if (!ft_strcmp(str, "ra"))
         write(1, "ra", 2);
     else if (!ft_strcmp(str, "rb"))

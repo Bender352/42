@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/15 23:55:10 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 19:38:28 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void    sort_stack(t_mothership *m);
 void    set_target_a(t_mothership *m);
 void    set_target_b(t_mothership *m);
 void    set_cost(t_mothership *m);
-void    cheapest_node(t_stack **stack);
+void    set_cheapest_node(t_stack **stack);
 void    shove_b_to_a(t_mothership *m);
 void    shove_a_to_b(t_mothership *m);
 t_stack *find_highest_i_node(t_stack **stack);

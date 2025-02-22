@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/19 19:44:22 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 19:48:52 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ int main(int arg, char **argv)
     else
         m.temp = ft_split(argv[1], ' ');
     total_nodes = fill_stack(&m);
-    
+    /*
     printf("Unsorted input stack\n");
     print_stack(&stack_a);
     printf("--------------------\n");
-    
+    */
     sort_method(&m, total_nodes);
-    
+    /*
     printf("--------------------\n");
     printf("Sorted Stack Output\n");
     print_stack(&stack_a);
     printf("--------------------\n");
-    
+    */
     free_stack(&stack_a, &stack_b);
     free_array(m.temp);
     m.temp = NULL;

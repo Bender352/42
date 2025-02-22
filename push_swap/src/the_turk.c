@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/22 16:42:25 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 19:46:42 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 //34:45 start from here to review the code!
 /***************************************** */
 
+int cycle = 0;
 
 void    do_the_turk(t_mothership *m)
 {
@@ -59,7 +60,7 @@ void    ini_stack_a(t_mothership *m)
     set_index(m->stack_b);
     set_target_a(m);
     set_cost(m);
-    cheapest_node(m->stack_a);
+    set_cheapest_node(m->stack_a);
 }
 
 void    ini_stack_b(t_mothership *m)
@@ -148,6 +149,7 @@ void    set_target_b(t_mothership *m)
         b = b->next;
     }
 }
+/* //MY VERSION
 void    set_cost(t_mothership *m)
 {
     int len_a;
@@ -169,8 +171,45 @@ void    set_cost(t_mothership *m)
         a = a->next;
     }    
 }
+*/
 
-void    cheapest_node(t_stack **stack)
+void set_cost(t_mothership *m)
+{
+    int len_a = count_nodes(m->stack_a);
+    int len_b = count_nodes(m->stack_b);
+    t_stack *a = *(m->stack_a);
+
+    while (a)
+    {
+        int cost_up_a = a->index;
+        int cost_down_a = len_a - a->index;
+        int cost_up_b = a->target->index;
+        int cost_down_b = len_b - a->target->index;
+
+        // Find the best way to move a and b separately
+        int move_a = (cost_up_a < cost_down_a) ? cost_up_a : cost_down_a;
+        int move_b = (cost_up_b < cost_down_b) ? cost_up_b : cost_down_b;
+
+        // If they are in the same half, take the max (using rr or rrr)
+        if ((a->above_median && a->target->above_median) ||
+            (!a->above_median && !a->target->above_median))
+        {
+            a->cost_push = (move_a > move_b) ? move_a : move_b;
+        }
+        else
+        {
+            a->cost_push = move_a + move_b; // Normal case: sum of separate moves
+        }
+
+        a = a->next;
+    }
+}
+
+
+
+
+
+void    set_cheapest_node(t_stack **stack)
 {
     long    lowest_value;
     t_stack *a;
@@ -198,20 +237,50 @@ void    shove_b_to_a(t_mothership *m)
     p(m->stack_b, m->stack_a);
     print_move("pb");
 }
+/* //MY VERSION
 void    shove_a_to_b(t_mothership *m)
 {
     t_stack *cheapy;
+    int i = 0;
 
+    ini_stack_a(m);
+    ini_stack_b(m);
     cheapy = get_cheapest_node(m->stack_a);
+    i = count_nodes(m->stack_a);
+    if (i)
+    {
+        
+    }
     if(cheapy->above_median && cheapy->target->above_median)
         rr_all(m, cheapy);
     else if(!(cheapy->above_median) && !(cheapy->target->above_median))
         rrr_all(m, cheapy);
+    i = count_nodes(m->stack_a);
+    cycle++;
     push_to_top_a(m, cheapy);
-    push_to_top_b(m, cheapy);
+    push_to_top_b(m, cheapy->target);
     p(m->stack_a, m->stack_b);
     print_move("pb");
 }
+*/
+
+void shove_a_to_b(t_mothership *m)
+{
+    while (count_nodes(m->stack_a) > 3) // Leave 3 nodes in A for final sorting
+    {
+        set_cost(m);
+        set_cheapest_node(m->stack_a);  // No need for double pointer
+        t_stack *cheapest = get_cheapest_node(m->stack_a);
+
+        if (!cheapest)
+            return;
+
+        push_to_top_a(m, cheapest);  // Move to the top optimally
+        p(m->stack_a, m->stack_b);    // Push to B
+    }
+}
+
+
 int cal_cost_push(t_stack **stack)
 {
     (void) stack;
@@ -268,12 +337,7 @@ t_stack *get_cheapest_node(t_stack **a)
 }
 void    rr_all(t_mothership *m, t_stack *cheapy)
 {
-    t_stack *a;
-    t_stack *b;
-
-    a = *(m->stack_a);
-    b = *(m->stack_b);
-    while (a != cheapy && b != cheapy->target)
+    while (*(m->stack_a) != cheapy && *(m->stack_b) != cheapy->target)
     {
         rotate_stack(m->stack_a);
         rotate_stack(m->stack_b);
@@ -294,11 +358,13 @@ void    rrr_all(t_mothership *m, t_stack *cheapy)
 
     }
 }
-
+/*//MYVERSION
 void    push_to_top_a(t_mothership *m, t_stack *top)
 {
     if (!top)
         return;
+
+
     while (top != *(m->stack_a))
     {
         if (top->above_median)
@@ -312,7 +378,28 @@ void    push_to_top_a(t_mothership *m, t_stack *top)
             print_move("rra");
         }
     }
+*/
+void    push_to_top_a(t_mothership *m, t_stack *top)
+{
+    t_stack **stack;
+    stack = m->stack_a;
+    int len = count_nodes(stack);
+    int up_moves = top->index;
+    int down_moves = len - top->index;
+
+    if (up_moves < down_moves)
+    {
+        while (*stack != top)
+            rotate_stack(stack);  // ra
+    }
+    else
+    {
+        while (*stack != top)
+            rev_rotate_stack(stack);  // rra
+    }
 }
+
+
 void    push_to_top_b(t_mothership *m, t_stack *top)
 {
     while (top!= *(m->stack_b))
