@@ -6,16 +6,11 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/22 19:46:42 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 20:03:15 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
-/***************************************** */
-//34:45 start from here to review the code!
-/***************************************** */
 
 int cycle = 0;
 
@@ -149,29 +144,6 @@ void    set_target_b(t_mothership *m)
         b = b->next;
     }
 }
-/* //MY VERSION
-void    set_cost(t_mothership *m)
-{
-    int len_a;
-    int len_b;
-    t_stack *a;
-
-    len_a = count_nodes(m->stack_a);
-    len_b = count_nodes(m->stack_b);
-    a = *(m->stack_a);
-    while (a)
-    {
-        a->cost_push = a->index;
-        if (!(a->above_median))
-            a->cost_push = len_a - a->index;
-        if (a->target->above_median)
-            a->cost_push += a->target->index;
-        else
-            a->cost_push += len_b - a->target->index;
-        a = a->next;
-    }    
-}
-*/
 
 void set_cost(t_mothership *m)
 {
@@ -205,10 +177,6 @@ void set_cost(t_mothership *m)
     }
 }
 
-
-
-
-
 void    set_cheapest_node(t_stack **stack)
 {
     long    lowest_value;
@@ -237,46 +205,20 @@ void    shove_b_to_a(t_mothership *m)
     p(m->stack_b, m->stack_a);
     print_move("pb");
 }
-/* //MY VERSION
-void    shove_a_to_b(t_mothership *m)
-{
-    t_stack *cheapy;
-    int i = 0;
-
-    ini_stack_a(m);
-    ini_stack_b(m);
-    cheapy = get_cheapest_node(m->stack_a);
-    i = count_nodes(m->stack_a);
-    if (i)
-    {
-        
-    }
-    if(cheapy->above_median && cheapy->target->above_median)
-        rr_all(m, cheapy);
-    else if(!(cheapy->above_median) && !(cheapy->target->above_median))
-        rrr_all(m, cheapy);
-    i = count_nodes(m->stack_a);
-    cycle++;
-    push_to_top_a(m, cheapy);
-    push_to_top_b(m, cheapy->target);
-    p(m->stack_a, m->stack_b);
-    print_move("pb");
-}
-*/
 
 void shove_a_to_b(t_mothership *m)
 {
-    while (count_nodes(m->stack_a) > 3) // Leave 3 nodes in A for final sorting
+    while (count_nodes(m->stack_a) > 3) 
     {
         set_cost(m);
-        set_cheapest_node(m->stack_a);  // No need for double pointer
+        set_cheapest_node(m->stack_a); 
         t_stack *cheapest = get_cheapest_node(m->stack_a);
 
         if (!cheapest)
             return;
 
-        push_to_top_a(m, cheapest);  // Move to the top optimally
-        p(m->stack_a, m->stack_b);    // Push to B
+        push_to_top_a(m, cheapest);
+        p(m->stack_a, m->stack_b);
     }
 }
 
@@ -358,27 +300,7 @@ void    rrr_all(t_mothership *m, t_stack *cheapy)
 
     }
 }
-/*//MYVERSION
-void    push_to_top_a(t_mothership *m, t_stack *top)
-{
-    if (!top)
-        return;
 
-
-    while (top != *(m->stack_a))
-    {
-        if (top->above_median)
-        {
-            rotate_stack(m->stack_a);
-            print_move("ra");
-        }
-        else
-        {
-            rev_rotate_stack(m->stack_a);
-            print_move("rra");
-        }
-    }
-*/
 void    push_to_top_a(t_mothership *m, t_stack *top)
 {
     t_stack **stack;
