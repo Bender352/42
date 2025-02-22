@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:46:48 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/07 16:49:40 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 16:33:50 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ void    print_move(char *str)
         write(1, "sb", 2);
     else if (!ft_strcmp(str, "ss"))
         write(1, "ss", 2);
-    else if (!ft_strcmp(str, "ra"))
-        write(1, "ra", 2);
-    else if (!ft_strcmp(str, "rb"))
-        write(1, "rb", 2);
-    else if (!ft_strcmp(str, "rr"))
-        write(1, "rr", 2);
     else if (!ft_strcmp(str, "rra"))
         write(1, "rra", 2);
     else if (!ft_strcmp(str, "rrb"))
         write(1, "rrb", 2);
     else if (!ft_strcmp(str, "rrr"))
         write(1, "rrr", 2);
+    else if (!ft_strcmp(str, "ra"))
+        write(1, "ra", 2);
+    else if (!ft_strcmp(str, "rb"))
+        write(1, "rb", 2);
+    else if (!ft_strcmp(str, "rr"))
+        write(1, "rr", 2);
     else if (!ft_strcmp(str, "pa"))
         write(1, "pa", 2);
     else if (!ft_strcmp(str, "pb"))

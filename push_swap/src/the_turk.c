@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/19 19:49:48 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/22 16:42:25 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void set_index (t_stack **stack)
     {
         list->index = i;
         if (i <= median)
-            list->above_median = true;
-        else
             list->above_median = false;
+        else
+            list->above_median = true;
         list = list->next;
         i++;
     }
@@ -114,7 +114,7 @@ void    set_target_a(t_mothership *m)
             b = b->next;
         }
         if (match_index == LONG_MIN)
-            a->target = find_highest_i_node(&b);
+            a->target = find_highest_i_node(m->stack_b);
         else
             a->target = target;
         a = a->next;
@@ -142,7 +142,7 @@ void    set_target_b(t_mothership *m)
             a = a->next;
         }
         if (match_index == LONG_MAX)
-            b->target = find_smallest_i_node(&a);
+            b->target = find_smallest_i_node(m->stack_a);
         else
             b->target = target;
         b = b->next;
@@ -176,6 +176,8 @@ void    cheapest_node(t_stack **stack)
     t_stack *a;
     t_stack *lowest_node;
 
+    if(!stack && !(*(stack)))
+        return;
     a = *(stack);
     lowest_value = LONG_MAX;
     while (a)
@@ -255,7 +257,7 @@ t_stack *get_cheapest_node(t_stack **a)
 {
     t_stack *node;
 
-    node = *a;
+    node = *(a);
     while (node)
     {
         if (node->cheapst)
@@ -282,18 +284,14 @@ void    rr_all(t_mothership *m, t_stack *cheapy)
 }
 void    rrr_all(t_mothership *m, t_stack *cheapy)
 {
-    t_stack *a;
-    t_stack *b;
-
-    a = *(m->stack_a);
-    b = *(m->stack_b);
-    while (a != cheapy && b != cheapy->target)
+    while (*(m->stack_a) != cheapy && *(m->stack_b) != cheapy->target)
     {
         rev_rotate_stack(m->stack_a);
         rev_rotate_stack(m->stack_b);
         print_move("rrr");
         set_index(m->stack_a);
         set_index(m->stack_b);
+
     }
 }
 
