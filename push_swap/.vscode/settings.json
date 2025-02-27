@@ -60,6 +60,7 @@
   "42header.username": "sbruck",
   "files.associations": {
     "push_swap.h": "c",
-    "random": "c"
+    "random": "c",
+    "chrono": "c"
   }
 }

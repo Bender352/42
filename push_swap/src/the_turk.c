@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/27 01:37:50 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/27 17:22:32 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,14 @@ void    set_cheapest_node(t_stack **stack)
 
 void    shove_b_to_a(t_mothership *m)
 {
+    int a_count = count_nodes(m->stack_a);
+    int b_count = count_nodes(m->stack_b);
+    if (a_count > b_count)
+    {
+        
+    }
     push_to_top_a(m, (*m->stack_b)->target);
-    pb(m);
+    pa(m);
 }
 
 void shove_a_to_b(t_mothership *m)
@@ -143,9 +149,8 @@ void shove_a_to_b(t_mothership *m)
 
         if (!cheapest)
             return;
-
         push_to_top_a(m, cheapest);
-        pa(m);
+        pb(m);
     }
 }
 
