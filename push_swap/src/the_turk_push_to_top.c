@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:17:43 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/22 20:22:39 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/27 00:53:03 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void    push_to_top_a(t_mothership *m, t_stack *top)
     if (up_moves < down_moves)
     {
         while (*stack != top)
-            rotate_stack(stack);  // ra
+            ra(stack);
     }
     else
     {
         while (*stack != top)
-            rev_rotate_stack(stack);  // rra
+            rra(stack);
     }
 }
 
@@ -39,13 +39,11 @@ void    push_to_top_b(t_mothership *m, t_stack *top)
     {
         if (top->target->above_median)
         {
-            rotate_stack(m->stack_b);
-            print_move("rb");
+            rb(m->stack_b);
         }
         else
         {
-            rev_rotate_stack(m->stack_b);
-            print_move("rrb");
+            rrb(m->stack_b);
         }
     }
 }

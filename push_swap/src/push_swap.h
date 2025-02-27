@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/22 19:38:28 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:02:39 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,20 @@ int     count_nodes(t_stack **stack);
 
 t_stack *last_node(t_stack  *list);
 
-void    s(t_stack **stack);
-void    p(t_stack **stack_from, t_stack **stack_to);
-void    rotate_stack(t_stack **stack);
-void    rev_rotate_stack(t_stack **stack);
-
+//void    s(t_stack **stack);
+void    sa(t_stack **stack_a);
+void    sb(t_stack **stack_b);
+//void    p(t_stack **stack_from, t_stack **stack_to);
+void    pa(t_mothership *m);
+void    pb(t_mothership *m);
+//void    rotate_stack(t_stack **stack);
+void    ra(t_stack **stack_a);
+void    rb(t_stack **stack_b);
+void    rr(t_stack **stack_a, t_stack **stack_b);
+//void    rev_rotate_stack(t_stack **stack);
+void    rra(t_stack **stack_a);
+void    rrb(t_stack **stack_b);
+void    rrr(t_stack **stack_a, t_stack **stack_b);
 void    do_the_turk(t_mothership *m);
 void    sort_method(t_mothership *m, int total_nodes);
 

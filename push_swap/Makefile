@@ -3,6 +3,8 @@ FLAGS = -Wall -Werror -Wextra
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
 SRC_FILES = error_handling \
+			set_targets \
+			init_stacks \
 			is_sorted \
 			print_move \
 			fill_stack \
@@ -11,11 +13,20 @@ SRC_FILES = error_handling \
             new_node \
             push_swap \
 			stack_handling \
+			sa_move \
+			sb_move \
+			ra_move \
+			rb_move \
+			rr_move \
+			rra_move \
+			rrb_move \
+			rrr_move \
+			pa_move \
+			pb_move \
 			sort3 \
 			sort2 \
 			move_nodes \
 			bubble_sort \
-			the_turk_rotate_stacks \
 			the_turk_push_to_top \
 			free_stuff
 

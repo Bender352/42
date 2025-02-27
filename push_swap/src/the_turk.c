@@ -6,13 +6,11 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/22 20:23:37 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:37:50 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int cycle = 0;
 
 void    do_the_turk(t_mothership *m)
 {
@@ -25,15 +23,9 @@ void    sort_stack(t_mothership *m)
 
     len = count_nodes(m->stack_a);
     if (len-- > 3 && !is_stack_sorted(m->stack_a))
-    {
-        p(m->stack_a, m->stack_b);
-        print_move("pb");
-    }
+        pb(m);
     if (len-- > 3 && !is_stack_sorted(m->stack_a))
-    {
-        p(m->stack_a, m->stack_b);
-        print_move("pb");
-    }
+        pb(m);
     while (len-- > 3 && !is_stack_sorted(m->stack_a))
     {
         ini_stack_a(m);
@@ -47,22 +39,6 @@ void    sort_stack(t_mothership *m)
     }
     set_index(m->stack_a);
     min_on_top(m);
-}
-
-void    ini_stack_a(t_mothership *m)
-{
-    set_index(m->stack_a);
-    set_index(m->stack_b);
-    set_target_a(m);
-    set_cost(m);
-    set_cheapest_node(m->stack_a);
-}
-
-void    ini_stack_b(t_mothership *m)
-{
-    set_index(m->stack_a);
-    set_index(m->stack_b);
-    set_target_b(m);
 }
 
 void set_index (t_stack **stack)
@@ -88,91 +64,43 @@ void set_index (t_stack **stack)
     }
 }
 
-void    set_target_a(t_mothership *m)
-{
-    t_stack *a;
-    t_stack *b;
-    t_stack *target;
-    long    match_index;
-   
-    a = *(m->stack_a);
-    while (a)
-    {
-        match_index = LONG_MIN;
-        b = *(m->stack_b);
-        while (b)
-        {
-            if (b->i < a->i && b->i > match_index)
-            {
-                match_index = b->i;
-                target = b;
-            }
-            b = b->next;
-        }
-        if (match_index == LONG_MIN)
-            a->target = find_highest_i_node(m->stack_b);
-        else
-            a->target = target;
-        a = a->next;
-    }
-}
-void    set_target_b(t_mothership *m)
-{
-    t_stack *a;
-    t_stack *b;
-    t_stack *target;
-    long    match_index;
-
-    b = *(m->stack_b);
-    while (b)
-    {
-        match_index = LONG_MAX;
-        a = *(m->stack_a);
-        while (a)
-        {
-            if (a->i > b->i && a->i < match_index)
-            {
-                match_index = a->i;
-                target = a;
-            }
-            a = a->next;
-        }
-        if (match_index == LONG_MAX)
-            b->target = find_smallest_i_node(m->stack_a);
-        else
-            b->target = target;
-        b = b->next;
-    }
-}
-
 void set_cost(t_mothership *m)
 {
     int len_a = count_nodes(m->stack_a);
     int len_b = count_nodes(m->stack_b);
     t_stack *a = *(m->stack_a);
+    int cost_up_a;
+    int cost_down_a;
+    int cost_up_b;
+    int cost_down_b;
+    int move_a;
+    int move_b;
 
     while (a)
     {
-        int cost_up_a = a->index;
-        int cost_down_a = len_a - a->index;
-        int cost_up_b = a->target->index;
-        int cost_down_b = len_b - a->target->index;
-
-        // Find the best way to move a and b separately
-        int move_a = (cost_up_a < cost_down_a) ? cost_up_a : cost_down_a;
-        int move_b = (cost_up_b < cost_down_b) ? cost_up_b : cost_down_b;
-
-        // If they are in the same half, take the max (using rr or rrr)
+        cost_up_a = a->index;
+        cost_down_a = len_a - a->index;
+        cost_up_b = a->target->index;
+        cost_down_b = len_b - a->target->index;
+        if(cost_up_a < cost_down_a)
+            move_a = cost_up_a;
+        else
+            move_a = cost_down_a;
+        if(cost_up_b < cost_down_b)
+            move_b = cost_up_b;
+        else
+            move_b = cost_down_b;
+        //move_a = (cost_up_a < cost_down_a) ? cost_up_a : cost_down_a;
+        //move_b = (cost_up_b < cost_down_b) ? cost_up_b : cost_down_b;
         if ((a->above_median && a->target->above_median) ||
             (!a->above_median && !a->target->above_median))
-        {
-            a->cost_push = (move_a > move_b) ? move_a : move_b;
-        }
+            //a->cost_push = (move_a > move_b) ? move_a : move_b;
+            if(move_a > move_b)
+                a->cost_push = move_a;
+            else
+                a->cost_push = move_b;
         else
-        {
             a->cost_push = move_a + move_b; // Normal case: sum of separate moves
-        }
-
         a = a->next;
     }
 }
@@ -202,8 +130,7 @@ void    set_cheapest_node(t_stack **stack)
 void    shove_b_to_a(t_mothership *m)
 {
     push_to_top_a(m, (*m->stack_b)->target);
-    p(m->stack_b, m->stack_a);
-    print_move("pb");
+    pb(m);
 }
 
 void shove_a_to_b(t_mothership *m)
@@ -218,7 +145,7 @@ void shove_a_to_b(t_mothership *m)
             return;
 
         push_to_top_a(m, cheapest);
-        p(m->stack_a, m->stack_b);
+        pa(m);
     }
 }
 
@@ -287,15 +214,9 @@ void    min_on_top(t_mothership *m)
     while((*a)->i != smallest_node->i)
     {
         if(smallest_node->above_median)
-        {
-            rotate_stack(a);
-            print_move("ra");
-        }
+            ra(a);
         else
-        {
-            rev_rotate_stack(a);
-            print_move("rra");
-        }
+            rra(a);
     }
 }
 

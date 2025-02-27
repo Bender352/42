@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_handling.c                                   :+:      :+:    :+:   */
+/*   init_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 14:07:54 by sven              #+#    #+#             */
-/*   Updated: 2025/02/27 00:53:03 by sbruck           ###   ########.fr       */
+/*   Created: 2025/02/27 01:21:54 by sbruck            #+#    #+#             */
+/*   Updated: 2025/02/27 01:22:56 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *last_node(t_stack  *list)
+void    ini_stack_a(t_mothership *m)
 {
-    t_stack *buf;
-    
-    if(!list)
-        return (NULL);
-    buf = list;
-    while (buf->next)
-        buf = buf->next;
-    return (buf);    
+    set_index(m->stack_a);
+    set_index(m->stack_b);
+    set_target_a(m);
+    set_cost(m);
+    set_cheapest_node(m->stack_a);
+}
+
+void    ini_stack_b(t_mothership *m)
+{
+    set_index(m->stack_a);
+    set_index(m->stack_b);
+    set_target_b(m);
 }

@@ -1,0 +1,5 @@
+# ignore all the testers in push_swap
+/push_swap/push_swap_tester
+/push_swap/Push-Swap-Tester
+/push_swap_visualiser
+/push_swap/simulator

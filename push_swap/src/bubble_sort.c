@@ -6,12 +6,12 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 08:29:44 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/06 15:25:03 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:05:15 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 void    highest_on_top(t_stack  **stack)
 {
     t_stack     *list;
@@ -62,3 +62,4 @@ void    bubble_sort(t_stack **stack_a, t_stack **stack_b)
 
 }
 
+*/

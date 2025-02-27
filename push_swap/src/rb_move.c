@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_handling.c                                   :+:      :+:    :+:   */
+/*   rb_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 14:07:54 by sven              #+#    #+#             */
-/*   Updated: 2025/02/27 00:53:03 by sbruck           ###   ########.fr       */
+/*   Created: 2025/02/27 00:11:07 by sbruck            #+#    #+#             */
+/*   Updated: 2025/02/27 01:01:14 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *last_node(t_stack  *list)
+static void    rotate_stack(t_stack **stack)
 {
-    t_stack *buf;
-    
-    if(!list)
-        return (NULL);
-    buf = list;
-    while (buf->next)
-        buf = buf->next;
-    return (buf);    
+    t_stack *first;
+    t_stack *last;
+
+    if(!stack || !(*stack) || !(*stack)->next)
+        return;
+    first = (*stack);
+    last = last_node((*stack));
+    last->next = first;
+    first->prev = last;
+    (*stack) = first->next;
+    first->next = NULL;
+    (*stack)->prev = NULL;
+}
+
+void    rb(t_stack **stack_b)
+{
+    rotate_stack(stack_b);
+    print_move("rb");
 }

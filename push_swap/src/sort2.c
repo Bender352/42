@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 20:00:28 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/15 20:02:12 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:04:50 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void    sort2(t_stack **stack_a)
 {
     if (!(is_stack_sorted(stack_a)))
         {
-            s(stack_a);
-            print_move("sa");
+            sa(stack_a);
         }
 }
