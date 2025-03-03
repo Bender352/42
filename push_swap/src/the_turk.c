@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/27 01:37:50 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/03 18:29:45 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    do_the_turk(t_mothership *m)
     sort_stack(m);
 }
 
-void    sort_stack(t_mothership *m)
+void    sort_stack(t_mothership *m) //sort stacks
 {
     int len;
 
@@ -29,42 +29,19 @@ void    sort_stack(t_mothership *m)
     while (len-- > 3 && !is_stack_sorted(m->stack_a))
     {
         ini_stack_a(m);
-        shove_a_to_b(m);
+        shove_a_to_b(m); //move_a_to_b
     }
     sort3(m->stack_a);
     while (*(m->stack_b))
     {
         ini_stack_b(m);
-        shove_b_to_a(m);
+        shove_b_to_a(m); //move_b_to_a
     }
-    set_index(m->stack_a);
+    set_index(m->stack_a); //current index
     min_on_top(m);
 }
 
-void set_index (t_stack **stack)
-{
-    int i;
-    int median;
-    t_stack *list;
-
-    if (!stack && !(*stack))
-        return;
-    median = count_nodes(stack) / 2;
-    list = (*stack);
-    i = 0;
-    while (list)
-    {
-        list->index = i;
-        if (i <= median)
-            list->above_median = false;
-        else
-            list->above_median = true;
-        list = list->next;
-        i++;
-    }
-}
-
-void set_cost(t_mothership *m)
+void set_cost(t_mothership *m) //cost_analyse
 {
     int len_a = count_nodes(m->stack_a);
     int len_b = count_nodes(m->stack_b);
@@ -105,7 +82,7 @@ void set_cost(t_mothership *m)
     }
 }
 
-void    set_cheapest_node(t_stack **stack)
+void    set_cheapest_node(t_stack **stack) //set_cheapest
 {
     long    lowest_value;
     t_stack *a;
@@ -135,11 +112,22 @@ void    shove_b_to_a(t_mothership *m)
 
 void shove_a_to_b(t_mothership *m)
 {
+    t_stack *cheapest;
+    
+    cheapest = get_cheapest_node(m->stack_a);
+    if(cheapest->above_median && cheapest->above_median)
+        rr_all(m, cheapest);
+    else if(!cheapest->above_median && !cheapest->above_median)
+        rrr_all(m, cheapest);
+    push_to_top_a(m, cheapest);
+    push_to_top_b(m, cheapest->target);
+    pb(m);
+/*
     while (count_nodes(m->stack_a) > 3) 
     {
         set_cost(m);
         set_cheapest_node(m->stack_a); 
-        t_stack *cheapest = get_cheapest_node(m->stack_a);
+        
 
         if (!cheapest)
             return;
@@ -147,6 +135,7 @@ void shove_a_to_b(t_mothership *m)
         push_to_top_a(m, cheapest);
         pa(m);
     }
+*/
 }
 
 int cal_cost_push(t_stack **stack)

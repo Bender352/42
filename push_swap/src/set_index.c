@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stacks.c                                      :+:      :+:    :+:   */
+/*   set_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 01:21:54 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/03 18:28:40 by sbruck           ###   ########.fr       */
+/*   Created: 2025/03/03 13:14:43 by sbruck            #+#    #+#             */
+/*   Updated: 2025/03/03 13:15:13 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ini_stack_a(t_mothership *m)
+void set_index (t_stack **stack) //current_index
 {
-    set_index(m->stack_a); //current_index
-    set_index(m->stack_b);
-    set_target_a(m); //set_target_a
-    set_cost(m); //cost_analyse
-    set_cheapest_node(m->stack_a);
-}
+    int i;
+    int median;
+    t_stack *list;
 
-void    ini_stack_b(t_mothership *m)
-{
-    set_index(m->stack_a);
-    set_index(m->stack_b);
-    set_target_b(m);
+    if (!stack && !(*stack))
+        return;
+    median = count_nodes(stack) / 2;
+    list = (*stack);
+    i = 0;
+    while (list)
+    {
+        list->index = i;
+        if (i <= median)
+            list->above_median = false;
+        else
+            list->above_median = true;
+        list = list->next;
+        i++;
+    }
 }

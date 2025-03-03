@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/27 00:02:41 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/03 18:28:40 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void    sort_method(t_mothership *m, int total_nodes)
     else if (total_nodes <= 3)
         sort3(m->stack_a);
     else
-        do_the_turk(m);
+        do_the_turk(m);  //sort_stacks
     /*
     else if (total_nodes <= 15)
     {

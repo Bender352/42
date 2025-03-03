@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:23:33 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/27 01:23:48 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/03 13:18:11 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ void    set_target_a(t_mothership *m)
             a->target = find_highest_i_node(m->stack_b);
         else
             a->target = target;
-        if(a->target == NULL)
-        {
-            a->target = NULL;
-        }
         a = a->next;
     }
 }
