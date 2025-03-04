@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 01:23:33 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/03 13:18:11 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/04 09:14:45 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,6 @@ void    set_target_b(t_mothership *m)
             b->target = find_smallest_i_node(m->stack_a);
         else
             b->target = target;
-        if(b->target == NULL)
-            {
-                b->target = NULL;
-            }
         b = b->next;
     }
 }

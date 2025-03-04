@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/03 18:29:45 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/04 11:58:51 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ void    set_cheapest_node(t_stack **stack) //set_cheapest
 
 void    shove_b_to_a(t_mothership *m)
 {
-    push_to_top_a(m, (*m->stack_b)->target);
-    pb(m);
+    prep_for_pushing(m->stack_a, (*m->stack_b)->target);
+    pa(m);
 }
 
 void shove_a_to_b(t_mothership *m)
@@ -119,8 +119,8 @@ void shove_a_to_b(t_mothership *m)
         rr_all(m, cheapest);
     else if(!cheapest->above_median && !cheapest->above_median)
         rrr_all(m, cheapest);
-    push_to_top_a(m, cheapest);
-    push_to_top_b(m, cheapest->target);
+    prep_for_pushing(m->stack_a, cheapest);
+    prep_for_pushing(m->stack_b, cheapest->target);
     pb(m);
 /*
     while (count_nodes(m->stack_a) > 3) 
@@ -132,7 +132,7 @@ void shove_a_to_b(t_mothership *m)
         if (!cheapest)
             return;
 
-        push_to_top_a(m, cheapest);
+        prep_a_to_push(m, cheapest);
         pa(m);
     }
 */

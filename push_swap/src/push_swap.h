@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/27 01:02:39 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/04 11:56:46 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,9 @@ t_stack *find_smallest_i_node(t_stack **stack);
 t_stack *get_cheapest_node(t_stack **a);
 void    rr_all(t_mothership *m, t_stack *cheapy);
 void    rrr_all(t_mothership *m, t_stack *cheapy);
-void    push_to_top_a(t_mothership *m, t_stack *top);
-void    push_to_top_b(t_mothership *m, t_stack *top);
+void    prep_a_to_push(t_mothership *m, t_stack *top);
+void    prep_b_to_push(t_mothership *m, t_stack *top);
+void    prep_for_pushing(t_stack **stack, t_stack *top);
 void    min_on_top(t_mothership *m);
 
 int     main(int arg, char **argv);

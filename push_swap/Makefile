@@ -27,8 +27,8 @@ SRC_FILES = error_handling \
 			sort2 \
 			move_nodes \
 			bubble_sort \
-			the_turk_push_to_top \
-			the_turk_rotate_stacks \
+			push_to_top \
+			rotate_stacks \
 			set_index \
 			free_stuff
 

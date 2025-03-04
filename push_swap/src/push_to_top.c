@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_turk_push_to_top.c                             :+:      :+:    :+:   */
+/*   push_to_top.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:17:43 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/03 18:41:29 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/04 11:58:23 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    push_to_top_a(t_mothership *m, t_stack *top)
+void    prep_for_pushing(t_stack **stack, t_stack *top) //prep for push
 {
-    t_stack **stack;
     int len;
     int up_moves;
     int down_moves;
 
-    stack = m->stack_a;
     len = count_nodes(stack);
     up_moves = top->index;
     down_moves = len - top->index;
@@ -35,8 +33,7 @@ void    push_to_top_a(t_mothership *m, t_stack *top)
     }
 }
 
-
-void    push_to_top_b(t_mothership *m, t_stack *top)
+void    prep_b_to_push(t_mothership *m, t_stack *top) //prep for push
 {
     /*
     while (top!= *(m->stack_b))
@@ -56,7 +53,7 @@ void    push_to_top_b(t_mothership *m, t_stack *top)
     int up_moves;
     int down_moves;
 
-    stack = m->stack_b;
+    stack = m->stack_a;
     len = count_nodes(stack);
     up_moves = top->index;
     down_moves = len - top->index;
