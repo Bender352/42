@@ -26,7 +26,7 @@
       ]
     },
     {
-      "name": "C/C++: gcc build and debug active file",
+      "name": "C/C++: gcc 100 Numbers",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/push_swap",
