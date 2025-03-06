@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 13:14:43 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/03 13:15:13 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/06 21:36:38 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void set_index (t_stack **stack) //current_index
     {
         list->index = i;
         if (i <= median)
-            list->above_median = false;
-        else
             list->above_median = true;
+        else
+            list->above_median = false;
         list = list->next;
         i++;
     }

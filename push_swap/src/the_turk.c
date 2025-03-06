@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/04 11:58:51 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/06 20:30:30 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,14 +183,16 @@ t_stack *get_cheapest_node(t_stack **a)
 {
     t_stack *node;
 
+    if(!a || !(*a))
+        return NULL;
     node = *(a);
     while (node)
     {
-        if (node->cheapst)
-            return (node);
+        if(node->cheapst == true)
+            return node;
         node = node->next;
     }
-    return NULL;
+        return NULL;
 }
 
 void    min_on_top(t_mothership *m)
