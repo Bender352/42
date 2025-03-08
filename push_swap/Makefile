@@ -4,6 +4,7 @@ SRC_PATH = ./src/
 OBJ_PATH = ./obj/
 SRC_FILES = error_handling \
 			check_input \
+			check_for_doubles \
 			set_targets \
 			init_stacks \
 			is_sorted \

@@ -6,13 +6,13 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:42:26 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/08 19:48:44 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 20:52:39 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void do_error()
+void    do_error()
 {
     write(2, "Error\n", 6);
     exit(1);
@@ -58,7 +58,7 @@ static void multi_string(char *argv)
         i++;
     while(argv[i])
         if(!(argv[i] >= '0' && argv[i++] <= '9'))
-            do_error(0);
+            do_error();
 }
 
 void    check_input(int arg, char **argv)
@@ -79,3 +79,4 @@ void    check_input(int arg, char **argv)
         }
     }    
 }
+

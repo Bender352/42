@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/08 15:42:01 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 20:28:38 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_mothership
 void    print_stack(t_stack **stack);
 
 void    check_input(int arg, char **argv);
+void    check_for_doubles(t_mothership *m, int flag1);
+void    do_error();
 
 t_stack *new_node(long int  i);
 int     find_smallest (t_stack **list);

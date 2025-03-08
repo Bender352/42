@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:39 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/08 17:09:30 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 20:44:24 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int main(int arg, char **argv)
         m.temp = argv + 1;
         flag1 = 0;
     }
+    fill_stack(&m);
+    check_for_doubles(&m, flag1);
     sort_method(&m);
     free_stack(&stack_a, &stack_b);
     if(flag1)
@@ -49,7 +51,7 @@ void    sort_method(t_mothership *m)
 {
     int total_nodes;
 
-    total_nodes = fill_stack(m);
+    total_nodes = count_nodes(m->stack_a);
     if(total_nodes <= 2)
         sort2(m->stack_a);
     else if (total_nodes <= 3)
