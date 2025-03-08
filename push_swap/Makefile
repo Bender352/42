@@ -3,6 +3,7 @@ FLAGS = -Wall -Werror -Wextra
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
 SRC_FILES = error_handling \
+			check_input \
 			set_targets \
 			init_stacks \
 			is_sorted \
@@ -26,7 +27,6 @@ SRC_FILES = error_handling \
 			sort3 \
 			sort2 \
 			move_nodes \
-			bubble_sort \
 			push_to_top \
 			rotate_stacks \
 			set_index \

@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 14:28:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/07 16:40:44 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 15:34:42 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int check_input_error(t_mothership *m)
         {
             if (temp2->i == i)
             {
-                m->error_msg = "Error: Double detected!";
+                m->error_msg = "Error";
                 show_error(m);
                 return (1);  // Stop execution when a duplicate is found
             }

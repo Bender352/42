@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:15:30 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/06 20:30:30 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 15:14:00 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void    set_cheapest_node(t_stack **stack) //set_cheapest
 
 void    shove_b_to_a(t_mothership *m)
 {
-    prep_for_pushing(m->stack_a, (*m->stack_b)->target);
+    prep_for_pushing_a(m->stack_a, (*m->stack_b)->target);
     pa(m);
 }
 
@@ -119,8 +119,8 @@ void shove_a_to_b(t_mothership *m)
         rr_all(m, cheapest);
     else if(!cheapest->above_median && !cheapest->above_median)
         rrr_all(m, cheapest);
-    prep_for_pushing(m->stack_a, cheapest);
-    prep_for_pushing(m->stack_b, cheapest->target);
+    prep_for_pushing_a(m->stack_a, cheapest);
+    prep_for_pushing_b(m->stack_b, cheapest->target);
     pb(m);
 /*
     while (count_nodes(m->stack_a) > 3) 

@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:27 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/04 11:56:46 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 15:42:01 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_mothership
 }   t_mothership;
 
 void    print_stack(t_stack **stack);
+
+void    check_input(int arg, char **argv);
 
 t_stack *new_node(long int  i);
 int     find_smallest (t_stack **list);
@@ -83,7 +85,7 @@ void    rra(t_stack **stack_a);
 void    rrb(t_stack **stack_b);
 void    rrr(t_stack **stack_a, t_stack **stack_b);
 void    do_the_turk(t_mothership *m);
-void    sort_method(t_mothership *m, int total_nodes);
+void    sort_method(t_mothership *m);
 
 void    sort3(t_stack   **head);
 void    sort2(t_stack **stack_a);
@@ -108,7 +110,8 @@ void    rr_all(t_mothership *m, t_stack *cheapy);
 void    rrr_all(t_mothership *m, t_stack *cheapy);
 void    prep_a_to_push(t_mothership *m, t_stack *top);
 void    prep_b_to_push(t_mothership *m, t_stack *top);
-void    prep_for_pushing(t_stack **stack, t_stack *top);
+void    prep_for_pushing_a(t_stack **stack, t_stack *top);
+void    prep_for_pushing_b(t_stack **stack, t_stack *top);
 void    min_on_top(t_mothership *m);
 
 int     main(int arg, char **argv);
