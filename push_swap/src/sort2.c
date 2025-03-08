@@ -6,16 +6,16 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 20:00:28 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/27 01:04:50 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 21:05:49 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    sort2(t_stack **stack_a)
+void	sort2(t_stack **stack_a)
 {
-    if (!(is_stack_sorted(stack_a)))
-        {
-            sa(stack_a);
-        }
+	if (!(is_stack_sorted(stack_a)))
+	{
+		sa(stack_a);
+	}
 }

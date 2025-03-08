@@ -6,51 +6,51 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:17 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/26 15:17:28 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 21:35:17 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int fill_stack(t_mothership *m)
+int	fill_stack(t_mothership *m)
 {
-    t_stack *temp;
-    int i;
-	long int l;
+	t_stack		*temp;
+	int			i;
+	long int	l;
 
-    i = 0;
-    while (i < element_count(m->temp))
-    {
+	i = 0;
+	while (i < element_count(m->temp))
+	{
 		l = ft_atol(m->temp[i]);
 		if (l < INT_MIN || l > INT_MAX)
 		{
 			m->error_msg = "A number is out of range of INT!";
 			show_error(m);
 		}
-        temp = new_node(l);
+		temp = new_node(l);
 		temp->index = i;
 		ft_lstadd_back(m->stack_a, temp);
 		i++;
-    }
+	}
 	return (i);
 }
 
-int element_count (char **str)
+int	element_count(char **str)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	if (!str)
 		return (0);
-    while (str[i])
-        i++;
-    return (i);
+	while (str[i])
+		i++;
+	return (i);
 }
 
 long	ft_atol(const char *str)
 {
-	int	i;
-	int	s;
+	int		i;
+	int		s;
 	long	res;
 
 	i = 0;

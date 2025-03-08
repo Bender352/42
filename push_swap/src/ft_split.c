@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:48:47 by sbruck            #+#    #+#             */
-/*   Updated: 2025/02/26 15:17:30 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/08 21:37:20 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	index = -1;
-	while (i <= ft_strlen((char *) s))
+	while (i <= ft_strlen((char *)s))
 	{
 		if (s[i] != c && index < 0)
 			index = i;
-		else if ((s[i] == c || i == ft_strlen((char *) s)) && index >= 0)
+		else if ((s[i] == c || i == ft_strlen((char *)s)) && index >= 0)
 		{
 			split[j++] = word_dup(s, index, i);
 			index = -1;
@@ -76,7 +76,7 @@ char	**ft_split(char const *s, char c)
 	return (split);
 }
 
-size_t	ft_strlen (char *str)
+size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
