@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void    sort2(t_stack **stack_a)
+void	sort2(t_stack **stack_a)
 {
-    if (!(is_stack_sorted(stack_a)))
-        {
-            sa(stack_a);
-        }
+	if (!(is_stack_sorted(stack_a)))
+	{
+		sa(stack_a);
+	}
 }

@@ -96,7 +96,7 @@
       ],
       "preLaunchTask": "make re",
       "miDebuggerPath": "/usr/bin/gdb"
-      },
+      },  
       {
         "name": "Laptop Debugger multiple numbers",
         "type": "lldb",

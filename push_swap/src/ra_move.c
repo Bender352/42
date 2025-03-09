@@ -12,24 +12,24 @@
 
 #include "push_swap.h"
 
-static void    rotate_stack(t_stack **stack)
+static void	rotate_stack(t_stack **stack)
 {
-    t_stack *first;
-    t_stack *last;
+	t_stack	*first;
+	t_stack	*last;
 
-    if(!stack || !(*stack) || !(*stack)->next)
-        return;
-    first = (*stack);
-    last = last_node((*stack));
-    last->next = first;
-    first->prev = last;
-    (*stack) = first->next;
-    first->next = NULL;
-    (*stack)->prev = NULL;
+	if (!stack || !(*stack) || !(*stack)->next)
+		return ;
+	first = (*stack);
+	last = last_node((*stack));
+	last->next = first;
+	first->prev = last;
+	(*stack) = first->next;
+	first->next = NULL;
+	(*stack)->prev = NULL;
 }
 
-void    ra(t_stack **stack_a)
+void	ra(t_stack **stack_a)
 {
-    rotate_stack(stack_a);
-    print_move("ra");
+	rotate_stack(stack_a);
+	print_move("ra");
 }

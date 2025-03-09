@@ -12,23 +12,23 @@
 
 #include "push_swap.h"
 
-void    sort3(t_stack   **head)
+void	sort3(t_stack **head)
 {
-    int     i;
+	int	i;
 
-    i = find_highest(head);
-    if (0 == i)
-    {
-        ra(head);
-    }
-    else if (1 == i)
-    {
-        sa(head);
-        ra(head);
-    }
-    i = find_smallest(head);
-    if (1 == i)
-    {
-        sa(head);
-    }
+	i = find_highest(head);
+	if (0 == i)
+	{
+		ra(head);
+	}
+	else if (1 == i)
+	{
+		sa(head);
+		ra(head);
+	}
+	i = find_smallest(head);
+	if (1 == i)
+	{
+		sa(head);
+	}
 }

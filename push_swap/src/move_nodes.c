@@ -12,74 +12,73 @@
 
 #include "push_swap.h"
 
-int find_smallest (t_stack **list)
+int	find_smallest(t_stack **list)
 {
-    int         i;
-    int         index;
-    int         track;
-    t_stack     *stack;
+	int		i;
+	int		index;
+	int		track;
+	t_stack	*stack;
 
-    i = 0;
-    index = 0;
-    track = 0;
-    if (!list && !*list)
-        return (-1);
-    stack = *list;
-    i = stack->i;
-    while (stack)
-    {
-        if (i > stack->i)
-        {
-            i = stack->i;
-            index = track;
-        }
-        track++;
-        stack = stack->next;
-    }
-    return (index);
+	i = 0;
+	index = 0;
+	track = 0;
+	if (!list && !*list)
+		return (-1);
+	stack = *list;
+	i = stack->i;
+	while (stack)
+	{
+		if (i > stack->i)
+		{
+			i = stack->i;
+			index = track;
+		}
+		track++;
+		stack = stack->next;
+	}
+	return (index);
 }
 
-int find_highest (t_stack **list)
+int	find_highest(t_stack **list)
 {
-    int         i;
-    int         index;
-    int         track;
-    t_stack     *stack;
+	int		i;
+	int		index;
+	int		track;
+	t_stack	*stack;
 
-    i = 0;
-    index = 0;
-    track = 0;
-    if (!list && !*list)
-        return (-1);
-    stack = *list;
-    i = stack->i;
-    while (stack)
-    {
-        if (i < stack->i)
-        {
-            i = stack->i;
-            index = track;
-        }
-        track++;
-        stack = stack->next;
-    }
-    return (index);
+	i = 0;
+	index = 0;
+	track = 0;
+	if (!list && !*list)
+		return (-1);
+	stack = *list;
+	i = stack->i;
+	while (stack)
+	{
+		if (i < stack->i)
+		{
+			i = stack->i;
+			index = track;
+		}
+		track++;
+		stack = stack->next;
+	}
+	return (index);
 }
 
-int count_nodes(t_stack **stack)
+int	count_nodes(t_stack **stack)
 {
-    int i;
+	int		i;
+	t_stack	*list;
 
-    i = 0;
-    t_stack *list;
-    if (!stack && !(*stack))
-        return (-1);
-    list = *stack;
-    while ((list))
-    {
-        i++;
-        list = list->next;
-    }
-    return (i);
+	i = 0;
+	if (!stack && !(*stack))
+		return (-1);
+	list = *stack;
+	while ((list))
+	{
+		i++;
+		list = list->next;
+	}
+	return (i);
 }
-
