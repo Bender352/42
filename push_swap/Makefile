@@ -5,6 +5,8 @@ OBJ_PATH = ./obj/
 SRC_FILES = error_handling \
 			check_input \
 			check_for_doubles \
+			the_turk_extension \
+			shoves_things_arround \
 			set_targets \
 			init_stacks \
 			is_sorted \
