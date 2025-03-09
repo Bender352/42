@@ -1,0 +1,8 @@
+-   standart checks of main input variables (just one string, check string for only digits (neg and pos))
+-   
+-   read the numbers into an array with ft_split
+-   create a and b strut arry ** (list_a and list_b)
+-   create a link_liste for each number and store them in list_a
+
+research for sorting algorithm
+-   
