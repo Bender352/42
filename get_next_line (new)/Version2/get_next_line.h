@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:25:19 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/11 08:32:53 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/13 12:14:59 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 # endif
 
 char    *get_next_line(size_t fd);
-char    *append_to_buf(char *buffer, char *read_buf);
+char	*append_to_buf(char *buffer, char *read_buf, int pos);
 void	free_stuff(char *buf1, char *buf2, char *buf3);
 int		len_str(char *str);
 int		contains_EOL(char *str);
 char    *create_buffer();
-
+char	*build_retrun_str(char *buf, int eol_pos);
 
 #endif

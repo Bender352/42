@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:25:00 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/13 11:20:07 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/13 12:29:56 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,30 @@ char    *get_next_line(size_t fd)
     while (!contains_EOL(buffer))
 	{
 		read(fd, read_buf, BUFFER_SIZE);
-		buffer = append_to_buf(buffer, read_buf);
+		buffer = append_to_buf(buffer, read_buf, 0);
 	}
 	if (contains_EOL(buffer) != 0)
-    {
-		
+		return (build_retrun_str(buffer, contains_EOL(buffer)));
+	else
+		return NULL;
+}
+
+char	*build_retrun_str(char *buf, int eol_pos)
+{
+    int	i;
+    char    *return_buf;
+
+    return_buf = create_buffer(eol_pos + 1);
+	if(!return_buf)
+		return NULL;
+	i = 0;
+	while (i <= eol_pos)
+	{
+		return_buf[i] = buf[i];
+		i++;
 	}
+	append_to_buf(0, buf, eol_pos);
+	return return_buf;
 }
 
 char    *create_buffer(int size)
@@ -67,19 +85,22 @@ char    *create_buffer(int size)
 	return buf;
 }
 
-char    *append_to_buf(char *buffer, char *read_buf, int pos)
+char	*append_to_buf(char *buffer, char *read_buf, int pos)
 {
     char    *temp;
+	char	*temp_2;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	if (pos != 0)						//only adds next line to buffer or \0 when EOF
-		read_buf = read_buf + pos + 1;
-    temp = create_buffer(len_str(buffer) + len_str(read_buf) + 1);
-    if(!temp)
-        return NULL;
+	if (pos)						//only adds next line to buffer or \0 when EOF
+		temp_2 = read_buf + pos + 1;
+	else
+		temp_2 = read_buf;
+    temp = create_buffer(len_str(buffer) + len_str(temp_2) + 1);
+	if(!temp)
+		return NULL;
 	while(buffer && buffer[i])
 	{
 		temp[i] = buffer[i];
@@ -138,7 +159,7 @@ int	contains_EOL(char *str)
 
 int	main()
 {
-	int i = 0;
+	
 	int	fd;
 
 	fd = open("text.txt", O_RDONLY);
