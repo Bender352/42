@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "gnl_task",
+            "type": "shell",
+            "command": "cc",
+            "args": [
+                "-c", 
+                "-g", 
+                "get_next_line.c", 
+                "-o", 
+                "gnl"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
