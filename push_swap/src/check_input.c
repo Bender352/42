@@ -6,7 +6,7 @@
 /*   By: sbruck <sbruck@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:42:26 by sbruck            #+#    #+#             */
-/*   Updated: 2025/03/08 21:33:34 by sbruck           ###   ########.fr       */
+/*   Updated: 2025/03/13 21:03:12 by sbruck           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	check_input(int arg, char **argv)
 	int	i;
 
 	i = 1;
-	if (arg < 2 && argv[1][0])
+	if (arg < 2 || argv[1][0])
 		do_error();
 	else if (arg == 2)
 		one_string(argv[1]);
